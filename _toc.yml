@@ -17,6 +17,13 @@ chapters:
   - file: Chapter2/XGBoost.ipynb
   - file: Chapter2/TabNet.ipynb
   - file: Chapter2/GNN.ipynb
+- file: Chapter3/Chapter3.md
+  sections:
+  - file: Chapter3/Discrimination.ipynb
+  - file: Chapter3/Calibration.ipynb
+- file: Chapter4/Chapter4.md
+  sections:
+  - file: Chapter4/SHAP.ipynb
 - file: Chapter5/Chapter5.md
   sections:
   - file: Chapter5/Fairness.ipynb

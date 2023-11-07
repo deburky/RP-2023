@@ -5,16 +5,16 @@ Risk Practitioner's Handbook
 
 ![Image](images/software.png)
 
-[![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-fuchsia?logo=GitHub)](https://github.com/deburky/RP-2023) [![View Book](https://img.shields.io/badge/Book-View%20Book-cyan?style=plastic&logo=book)](https://deburky.github.io/RP-2023/README.html)
+[![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-fuchsia?logo=GitHub)](https://github.com/deburky) [![View Book](https://img.shields.io/badge/Book-View%20Book-cyan?style=plastic&logo=book)](https://github.com/deburky)
 </div>
 
-## Introduction
 
 <span style="font-family: Karma, sans-serif;">
 
-The idea to write this handbook came to me after I started to research convenient personal knowledge management tools to keep track of my library of web links and research papers about predictive models in the financial services domain, specifically in financial risk management.
+The idea to write this handbook came to me after I started to research convenient personal knowledge management tools to keep track of my library of web links and research papers about predictive models in the financial services domain, specifically in financial risk management. 
 
 There are several reasons why financial risk as a domain of specialty is special and not easy to unlock:
+
 
 * Credit scoring a high-risk application of machine learning, which is guided specific requirements for the end-to-end model development cycle. This is very different from a typical process of unconstrained model prototyping aimed at achieving top accuracy
 * Financial data has the highest value according to <a href="https://edmcouncil.org/wp-content/uploads/2023/03/EDM_Council_Data_ROI_SIG_Value_of_Data_29_Mar_2023_.pdf">this study</a> and is one of the most expensive to obtain and is very specific to an institution running lending operations
@@ -24,14 +24,6 @@ This handbook is focused on Python and its scientific ecosystem. Some years ago,
 
 
 This handbook is an attempt to systematically collect relevant applied-focused materials that may be useful to a practitioner attempting to frame credit risk as a machine learning problem. Examples in the notebooks supplementing each chapter exemplify some examples of credit risk modeling work that can be extended to various real-world datasets.
-
-The structure of the Handbook is as follows:
-
-* Chapter 1. Datasets
-* Chapter 2. Models
-* Chapter 3. Metrics
-* Chapter 4. Explainability
-* Chapter 5. Fairness
 
 </span>
 
