@@ -1,0 +1,615 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Explainability &#8212; Risk Practitioner Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/static.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter4/Chapter4';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.1. Explainability" href="SHAP.html" />
+    <link rel="prev" title="3.4. Calibration" href="../Chapter3/Calibration.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Risk Practitioner Handbook</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="SHAP.html">4.1. Explainability</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../README.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="explainability">
+<h1><span class="section-number">4. </span>Explainability<a class="headerlink" href="#explainability" title="Permalink to this heading">#</a></h1>
+<span style="font-family: Karma, sans-serif;">
+<p>In the domain of credit scoring and predictive modeling in general, interpretability and explainability are often used interchangeably, both aimed at demystifying the workings of a machine learning model.</p>
+<p><b>Interpretability</b> helps us understand how an ML model works. It involves decomposing the model’s inner workings, such as weights and features. For example, an economist can scrutinize a  model’s parameters to comprehend its behavior and/or perform sensitivity analyses.</p>
+<p>Machine learning models can often be seen as ‘black boxes’ that provide no insight on how they arrive at their predictions. This lack of transparency can be problematic in understanding the rationale behind decisions provided by a given model. This is where <b>explainability</b> comes into play by articulating the model’s behavior in terms that are comprehensible to humans.</p>
+<p><img alt="Image" src="../_images/accuracy_explainability_small.png" /></p>
+<p>While linear models are naturally interpretable owing to their linear weights, tree-based models, particularly those of lower complexity, exhibit a capacity to craft easily comprehensible single-feature split conditions, lending themselves to human expert scrutiny.</p>
+<p>However, the most interesting analysis often extends beyond feature importance and delves into feature interactions. To understand these complex relationships, both tree-based models and neural networks frequently rely on the application of external interpretability methods.</p>
+<p><img alt="Image" src="../_images/pdp_small.png" /></p>
+<p>This chapter will cover the SHAP framework as the most well-grounded tool for the task as well as TabNet’s internal explainer in the notebook supplementing this chapter.</p>
+<center><code> ... </code></center>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Explainable Machine Learning Models of Consumer Credit Risk</p></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4006840">Read Here</a></p>
+<ul>
+<li><p>This study demonstrates that the functionality of “black-box” machine learning models can be explained to a range of different stakeholders using the right tools. The approach is aimed at unlocking the future potential of applying AI to improve credit-risk models’ performance.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Machine Learning Explainability in Finance: an Application to Default Risk Analysis</p></p>
+<p><b>Bank of England</b> <img src="https://upload.wikimedia.org/wikipedia/de/7/72/Bank_of_England_logo.svg" width=70></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.bankofengland.co.uk/working-paper/2019/machine-learning-explainability-in-finance-an-application-to-default-risk-analysis">Read Here</a></p>
+<ul>
+<li><p>This paper proposes a framework for addressing the “black box” problem present in machine learning applications. The paper’s goal is to develop a systematic analytical framework that could be used for approaching explainability questions in real-world ﬁnancial applications.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Accuracy of Explanations of Machine Learning Models for Credit Decisions</p></p>
+<p><b>Bank of Spain</b> <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Logo_Banco_de_Espa%C3%B1a.svg" width=70></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4144780">Read Here</a></p>
+<ul>
+<li><p>A credit risk governance and regulation framework is proposed to evaluate the relevance of the input variables on a credit risk model’s prediction using post-hoc explanation techniques such as SHAP and permutation feature importance. The paper also highlights the potential of synthetic datasets for evaluating model interpretability tools.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Explaining and Accelerating Machine Learning for Loan Delinquencies</p></p>
+<p><b>NVIDIA</b> <img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg", width=20></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.nvidia.com/blog/explaining-and-accelerating-machine-learning-for-loan-delinquencies/">Read Here</a></p>
+<ul>
+<li><p>In this post, the authors discuss how to use RAPIDS to GPU-accelerate the end-to-end default modeling workflow: load and merge data, train a model to predict new results, and explain predictions of a financial credit risk problem using Shapley values.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Why Are We Using Black Box Models in AI When We Don’t Need To? A Lesson From an Explainable AI Competition</p></p>
+<p><b>MIT Press</b> <img src="https://upload.wikimedia.org/wikipedia/commons/1/10/MIT_Press_logo.svg" width=10></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://hdsr.mitpress.mit.edu/pub/f9kuryi8/release/8">Read Here</a></p>
+<ul>
+<li><p>The article introduces Cynthia Rudin, a renowned machine learning expert, who advocates for transparency in machine learning models, drawing on her experiences with data science projects. In this article she reveals a surprising insight that different ML algorithms can yield similar accuracy under certain circumstances.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Stop Explaining Black Box Machine Learning Models for High Stakes Decisions and Use Interpretable Models Instead</p></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1811.10154">Read Here</a></p>
+<ul>
+<li><p>This paper challenges the notion of a trade-off between accuracy and interpretability outlining several key reasons why explainable “black-boxes” should be avoided in high-stakes decisions. “Black-box” algorithms can still be useful in high-stakes decisions as part of the knowledge discovery process (for instance, to obtain baseline levels of performance), but they are not generally the final goal of knowledge discovery.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">We Didn’t Explain the Black Box – We Replaced it with an Interpretable Model</p></p>
+<p><b>FICO</b> <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/FICO_logo.svg" width=25></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/1811.10154">Read Here</a></p>
+<ul>
+<li><p>This guest blog was written by the winners of the FICO Recognition Award in the 2018 Explainable Machine Learning Challenge. The team’s “glass-box” two-layer additive risk model turned out to be just as accurate (~74% accuracy) as the best “black-box” models.</p></li>
+</ul>
+</li>
+</ul>
+<details><summary class="summary-box"><b>More resources to read</b><br> Explore additional resources and references for in-depth understanding of the topics covered in this section.</summary>
+  <br>
+  <p>
+  <a href="https://www.packtpub.com/product/interpretable-machine-learning-with-python/9781800203907">Interpretable Machine Learning with Python</a><br>
+  </p>
+  <p>
+  <a href="https://www.nature.com/articles/s41597-023-01974-x">Evaluating Explainability for Graph Neural Networks</a><br>
+  </p>
+  <p>
+  <a href="https://www.sciencedirect.com/science/article/pii/S0377221723005088">Interpretable Machine Learning for Imbalanced Credit Scoring Datasets</a><br>
+  </p>
+  <p>
+  <a href="https://docs.aws.amazon.com/whitepapers/latest/model-explainability-aws-ai-ml/interpretability-versus-explainability.html">Interpretability Versus Explainability - AWS Whitepaper</a><br>
+  </p>
+  <p>
+  <a href="https://www.insightpartners.com/ideas/responsible-ai-governance/">Investor POV: AI Governance and Responsible Use</a><br>
+  </p>
+  <p>
+  <a href="https://juanitorduz.github.io/interpretable_ml">Exploring Tools for Interpretable Machine Learning</a><br>
+  </p>
+  <p>
+  <a href="https://domino.ai/blog/shap-lime-python-libraries-part-1-great-explainers-pros-cons">SHAP and LIME Python Libraries: Part 1 - Great Explainers, with Pros and Cons to Both - domino.ai </a><br>
+  </p>
+</details>
+</span>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapter4"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chapter3/Calibration.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Calibration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SHAP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Explainability</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/Chapter4/Chapter4.md">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

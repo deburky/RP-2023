@@ -1,0 +1,32 @@
+.summary-box {
+  background-color: #b2ebf2; /* Background color */
+  color: #0097a7; /* Text color */
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Solid border */
+hr.solid {
+  border-top: 3px solid #bbb;
+}
+
+/* Rounded border */
+hr.rounded {
+  border-top: 8px solid #bbb;
+  border-radius: 5px;
+}
+
+/* Solid border */
+hr.solid_green {
+  border-top: 3px solid #40fbb3;
+}
+
+.two-columns {
+  display: flex;
+}
+
+.column {
+  flex: 1;
+  padding: 10px;
+}

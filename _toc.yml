@@ -1,0 +1,29 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README.md
+options:  
+  numbered: True
+chapters:
+- file: Chapter1/Chapter1.md
+  sections:
+  - file: Chapter1/Pandas_and_Polars.ipynb
+  - file: Chapter1/Python.ipynb
+  - file: Chapter1/NumPy.ipynb
+- file: Chapter2/Chapter2.md
+  sections:
+  - file: Chapter2/WOE.ipynb
+  - file: Chapter2/XGBoost.ipynb
+  - file: Chapter2/TabNet.ipynb
+  - file: Chapter2/GNN.ipynb
+- file: Chapter3/Chapter3.md
+  sections:
+  - file: Chapter3/Discrimination.ipynb
+  - file: Chapter3/Calibration.ipynb
+- file: Chapter4/Chapter4.md
+  sections:
+  - file: Chapter4/SHAP.ipynb
+- file: Chapter5/Chapter5.md
+  sections:
+  - file: Chapter5/Fairness.ipynb
