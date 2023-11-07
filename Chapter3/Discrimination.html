@@ -1,0 +1,1114 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3.3. Discrimination &#8212; Risk Practitioner Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/static.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter3/Discrimination';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.4. Calibration" href="Calibration.html" />
+    <link rel="prev" title="3. Metrics" href="Chapter3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Risk Practitioner Handbook</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3.3. Discrimination</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Calibration.html">3.4. Calibration</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../README.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Chapter3.html" class="nav-link"><span class="section-number">3. </span>Metrics</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="discrimination">
+<h1><span class="section-number">3.3. </span>Discrimination<a class="headerlink" href="#discrimination" title="Permalink to this heading">#</a></h1>
+<h4>ROC Curve (Receiver Operating Characteristic Curve)</h4><div class="alert alert-block alert-info">
+A Receiver Operating Characteristic curve, often referred to as the <b>ROC curve</b>, is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied. The <b>ROC curve</b> is created by plotting the <b>True Positive Rate (TPR)</b> against the <b>False Positive Rate (FPR)</b> at various threshold settings.</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">,</span> <span class="n">roc_curve</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a synthetic dataset</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">weights</span><span class="o">=</span><span class="p">[</span><span class="mf">0.90</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">],</span>
+    <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">n_informative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">))]</span>
+
+<span class="n">ix_train</span><span class="p">,</span> <span class="n">ix_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">62</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an XGBoost model with random forests</span>
+<span class="n">model_gbdt</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">booster</span><span class="o">=</span><span class="s2">&quot;gbtree&quot;</span><span class="p">,</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">colsample_bynode</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;logloss&quot;</span><span class="p">,</span> <span class="s2">&quot;auc&quot;</span><span class="p">],</span>
+    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">evalset</span> <span class="o">=</span> <span class="p">[(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">]),</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">])]</span>
+
+<span class="c1"># Fit the model to the generated dataset</span>
+<span class="n">model_gbdt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">evalset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0]	validation_0-logloss:0.31868	validation_0-auc:0.74799	validation_1-logloss:0.32003	validation_1-auc:0.73429
+[1]	validation_0-logloss:0.31147	validation_0-auc:0.77143	validation_1-logloss:0.31330	validation_1-auc:0.75790
+[2]	validation_0-logloss:0.29090	validation_0-auc:0.80875	validation_1-logloss:0.29277	validation_1-auc:0.79646
+[3]	validation_0-logloss:0.25391	validation_0-auc:0.87448	validation_1-logloss:0.25929	validation_1-auc:0.85711
+[4]	validation_0-logloss:0.23867	validation_0-auc:0.87743	validation_1-logloss:0.24538	validation_1-auc:0.86018
+[5]	validation_0-logloss:0.23249	validation_0-auc:0.87962	validation_1-logloss:0.23899	validation_1-auc:0.86309
+[6]	validation_0-logloss:0.22075	validation_0-auc:0.88028	validation_1-logloss:0.22876	validation_1-auc:0.86379
+[7]	validation_0-logloss:0.20951	validation_0-auc:0.88844	validation_1-logloss:0.21681	validation_1-auc:0.87391
+[8]	validation_0-logloss:0.20340	validation_0-auc:0.89566	validation_1-logloss:0.21060	validation_1-auc:0.88160
+[9]	validation_0-logloss:0.19451	validation_0-auc:0.90646	validation_1-logloss:0.20321	validation_1-auc:0.89147
+[10]	validation_0-logloss:0.18822	validation_0-auc:0.90784	validation_1-logloss:0.19768	validation_1-auc:0.89276
+[11]	validation_0-logloss:0.18632	validation_0-auc:0.90870	validation_1-logloss:0.19591	validation_1-auc:0.89392
+[12]	validation_0-logloss:0.18271	validation_0-auc:0.91054	validation_1-logloss:0.19230	validation_1-auc:0.89655
+[13]	validation_0-logloss:0.17151	validation_0-auc:0.91748	validation_1-logloss:0.18161	validation_1-auc:0.90503
+[14]	validation_0-logloss:0.16778	validation_0-auc:0.92028	validation_1-logloss:0.17812	validation_1-auc:0.90811
+[15]	validation_0-logloss:0.16652	validation_0-auc:0.92346	validation_1-logloss:0.17703	validation_1-auc:0.91141
+[16]	validation_0-logloss:0.16468	validation_0-auc:0.92403	validation_1-logloss:0.17518	validation_1-auc:0.91224
+[17]	validation_0-logloss:0.16159	validation_0-auc:0.92810	validation_1-logloss:0.17206	validation_1-auc:0.91620
+[18]	validation_0-logloss:0.15828	validation_0-auc:0.93233	validation_1-logloss:0.16814	validation_1-auc:0.92143
+[19]	validation_0-logloss:0.15637	validation_0-auc:0.93266	validation_1-logloss:0.16663	validation_1-auc:0.92141
+[20]	validation_0-logloss:0.15157	validation_0-auc:0.93809	validation_1-logloss:0.16189	validation_1-auc:0.92716
+[21]	validation_0-logloss:0.15019	validation_0-auc:0.94001	validation_1-logloss:0.16036	validation_1-auc:0.92986
+[22]	validation_0-logloss:0.14763	validation_0-auc:0.94201	validation_1-logloss:0.15787	validation_1-auc:0.93161
+[23]	validation_0-logloss:0.14683	validation_0-auc:0.94312	validation_1-logloss:0.15725	validation_1-auc:0.93254
+[24]	validation_0-logloss:0.14649	validation_0-auc:0.94300	validation_1-logloss:0.15711	validation_1-auc:0.93215
+[25]	validation_0-logloss:0.14497	validation_0-auc:0.94405	validation_1-logloss:0.15576	validation_1-auc:0.93276
+[26]	validation_0-logloss:0.14438	validation_0-auc:0.94412	validation_1-logloss:0.15540	validation_1-auc:0.93225
+[27]	validation_0-logloss:0.14372	validation_0-auc:0.94514	validation_1-logloss:0.15473	validation_1-auc:0.93327
+[28]	validation_0-logloss:0.14293	validation_0-auc:0.94524	validation_1-logloss:0.15389	validation_1-auc:0.93358
+[29]	validation_0-logloss:0.14181	validation_0-auc:0.94640	validation_1-logloss:0.15264	validation_1-auc:0.93522
+[30]	validation_0-logloss:0.14124	validation_0-auc:0.94732	validation_1-logloss:0.15194	validation_1-auc:0.93615
+[31]	validation_0-logloss:0.14067	validation_0-auc:0.94754	validation_1-logloss:0.15164	validation_1-auc:0.93659
+[32]	validation_0-logloss:0.13768	validation_0-auc:0.94923	validation_1-logloss:0.14873	validation_1-auc:0.93882
+[33]	validation_0-logloss:0.13700	validation_0-auc:0.94980	validation_1-logloss:0.14807	validation_1-auc:0.93935
+[34]	validation_0-logloss:0.13583	validation_0-auc:0.95112	validation_1-logloss:0.14707	validation_1-auc:0.94033
+[35]	validation_0-logloss:0.13547	validation_0-auc:0.95109	validation_1-logloss:0.14677	validation_1-auc:0.94021
+[36]	validation_0-logloss:0.13478	validation_0-auc:0.95185	validation_1-logloss:0.14616	validation_1-auc:0.94084
+[37]	validation_0-logloss:0.13438	validation_0-auc:0.95207	validation_1-logloss:0.14566	validation_1-auc:0.94175
+[38]	validation_0-logloss:0.13321	validation_0-auc:0.95237	validation_1-logloss:0.14457	validation_1-auc:0.94193
+[39]	validation_0-logloss:0.13247	validation_0-auc:0.95248	validation_1-logloss:0.14407	validation_1-auc:0.94214
+[40]	validation_0-logloss:0.13169	validation_0-auc:0.95313	validation_1-logloss:0.14343	validation_1-auc:0.94244
+[41]	validation_0-logloss:0.13139	validation_0-auc:0.95371	validation_1-logloss:0.14339	validation_1-auc:0.94261
+[42]	validation_0-logloss:0.13113	validation_0-auc:0.95391	validation_1-logloss:0.14316	validation_1-auc:0.94302
+[43]	validation_0-logloss:0.12623	validation_0-auc:0.95643	validation_1-logloss:0.13890	validation_1-auc:0.94591
+[44]	validation_0-logloss:0.12470	validation_0-auc:0.95712	validation_1-logloss:0.13783	validation_1-auc:0.94638
+[45]	validation_0-logloss:0.12441	validation_0-auc:0.95745	validation_1-logloss:0.13771	validation_1-auc:0.94619
+[46]	validation_0-logloss:0.12365	validation_0-auc:0.95841	validation_1-logloss:0.13739	validation_1-auc:0.94652
+[47]	validation_0-logloss:0.12301	validation_0-auc:0.95895	validation_1-logloss:0.13697	validation_1-auc:0.94669
+[48]	validation_0-logloss:0.12173	validation_0-auc:0.95932	validation_1-logloss:0.13588	validation_1-auc:0.94721
+[49]	validation_0-logloss:0.12075	validation_0-auc:0.96029	validation_1-logloss:0.13494	validation_1-auc:0.94837
+[50]	validation_0-logloss:0.11699	validation_0-auc:0.96234	validation_1-logloss:0.13082	validation_1-auc:0.95033
+[51]	validation_0-logloss:0.11694	validation_0-auc:0.96240	validation_1-logloss:0.13076	validation_1-auc:0.95039
+[52]	validation_0-logloss:0.11667	validation_0-auc:0.96245	validation_1-logloss:0.13069	validation_1-auc:0.95027
+[53]	validation_0-logloss:0.11653	validation_0-auc:0.96258	validation_1-logloss:0.13071	validation_1-auc:0.95027
+[54]	validation_0-logloss:0.11280	validation_0-auc:0.96470	validation_1-logloss:0.12685	validation_1-auc:0.95280
+[55]	validation_0-logloss:0.11265	validation_0-auc:0.96468	validation_1-logloss:0.12677	validation_1-auc:0.95273
+[56]	validation_0-logloss:0.11249	validation_0-auc:0.96485	validation_1-logloss:0.12675	validation_1-auc:0.95263
+[57]	validation_0-logloss:0.11175	validation_0-auc:0.96511	validation_1-logloss:0.12645	validation_1-auc:0.95280
+[58]	validation_0-logloss:0.11159	validation_0-auc:0.96528	validation_1-logloss:0.12644	validation_1-auc:0.95299
+[59]	validation_0-logloss:0.11053	validation_0-auc:0.96588	validation_1-logloss:0.12551	validation_1-auc:0.95360
+[60]	validation_0-logloss:0.10953	validation_0-auc:0.96661	validation_1-logloss:0.12410	validation_1-auc:0.95492
+[61]	validation_0-logloss:0.10929	validation_0-auc:0.96669	validation_1-logloss:0.12410	validation_1-auc:0.95474
+[62]	validation_0-logloss:0.10884	validation_0-auc:0.96690	validation_1-logloss:0.12409	validation_1-auc:0.95455
+[63]	validation_0-logloss:0.10867	validation_0-auc:0.96707	validation_1-logloss:0.12413	validation_1-auc:0.95441
+[64]	validation_0-logloss:0.10714	validation_0-auc:0.96794	validation_1-logloss:0.12296	validation_1-auc:0.95527
+[65]	validation_0-logloss:0.10681	validation_0-auc:0.96827	validation_1-logloss:0.12257	validation_1-auc:0.95569
+[66]	validation_0-logloss:0.10661	validation_0-auc:0.96830	validation_1-logloss:0.12263	validation_1-auc:0.95542
+[67]	validation_0-logloss:0.10646	validation_0-auc:0.96841	validation_1-logloss:0.12258	validation_1-auc:0.95531
+[68]	validation_0-logloss:0.10634	validation_0-auc:0.96859	validation_1-logloss:0.12253	validation_1-auc:0.95553
+[69]	validation_0-logloss:0.10608	validation_0-auc:0.96867	validation_1-logloss:0.12227	validation_1-auc:0.95580
+[70]	validation_0-logloss:0.10598	validation_0-auc:0.96875	validation_1-logloss:0.12241	validation_1-auc:0.95576
+[71]	validation_0-logloss:0.10579	validation_0-auc:0.96898	validation_1-logloss:0.12235	validation_1-auc:0.95585
+[72]	validation_0-logloss:0.10435	validation_0-auc:0.96956	validation_1-logloss:0.12086	validation_1-auc:0.95663
+[73]	validation_0-logloss:0.10293	validation_0-auc:0.97004	validation_1-logloss:0.11963	validation_1-auc:0.95723
+[74]	validation_0-logloss:0.10276	validation_0-auc:0.97012	validation_1-logloss:0.11971	validation_1-auc:0.95694
+[75]	validation_0-logloss:0.10200	validation_0-auc:0.97053	validation_1-logloss:0.11893	validation_1-auc:0.95774
+[76]	validation_0-logloss:0.10171	validation_0-auc:0.97062	validation_1-logloss:0.11876	validation_1-auc:0.95785
+[77]	validation_0-logloss:0.10109	validation_0-auc:0.97073	validation_1-logloss:0.11803	validation_1-auc:0.95804
+[78]	validation_0-logloss:0.10071	validation_0-auc:0.97073	validation_1-logloss:0.11815	validation_1-auc:0.95768
+[79]	validation_0-logloss:0.10010	validation_0-auc:0.97098	validation_1-logloss:0.11758	validation_1-auc:0.95783
+[80]	validation_0-logloss:0.10006	validation_0-auc:0.97093	validation_1-logloss:0.11756	validation_1-auc:0.95783
+[81]	validation_0-logloss:0.09989	validation_0-auc:0.97105	validation_1-logloss:0.11743	validation_1-auc:0.95805
+[82]	validation_0-logloss:0.09962	validation_0-auc:0.97129	validation_1-logloss:0.11725	validation_1-auc:0.95794
+[83]	validation_0-logloss:0.09947	validation_0-auc:0.97167	validation_1-logloss:0.11727	validation_1-auc:0.95787
+[84]	validation_0-logloss:0.09941	validation_0-auc:0.97172	validation_1-logloss:0.11736	validation_1-auc:0.95782
+[85]	validation_0-logloss:0.09928	validation_0-auc:0.97186	validation_1-logloss:0.11740	validation_1-auc:0.95779
+[86]	validation_0-logloss:0.09903	validation_0-auc:0.97202	validation_1-logloss:0.11724	validation_1-auc:0.95777
+[87]	validation_0-logloss:0.09891	validation_0-auc:0.97198	validation_1-logloss:0.11712	validation_1-auc:0.95784
+[88]	validation_0-logloss:0.09873	validation_0-auc:0.97225	validation_1-logloss:0.11713	validation_1-auc:0.95791
+[89]	validation_0-logloss:0.09859	validation_0-auc:0.97238	validation_1-logloss:0.11716	validation_1-auc:0.95788
+[90]	validation_0-logloss:0.09845	validation_0-auc:0.97253	validation_1-logloss:0.11708	validation_1-auc:0.95773
+[91]	validation_0-logloss:0.09806	validation_0-auc:0.97273	validation_1-logloss:0.11670	validation_1-auc:0.95793
+</pre></div>
+</div>
+<div class="output text_html"><style>#sk-container-id-1 {color: black;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>XGBClassifier(base_score=None, booster=&#x27;gbtree&#x27;, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=0.2,
+              colsample_bytree=None, device=None, early_stopping_rounds=10,
+              enable_categorical=False, eval_metric=[&#x27;logloss&#x27;, &#x27;auc&#x27;],
+              feature_types=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=None, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=3,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=None,
+              n_jobs=None, num_parallel_tree=None, random_state=None, ...)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">XGBClassifier</label><div class="sk-toggleable__content"><pre>XGBClassifier(base_score=None, booster=&#x27;gbtree&#x27;, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=0.2,
+              colsample_bytree=None, device=None, early_stopping_rounds=10,
+              enable_categorical=False, eval_metric=[&#x27;logloss&#x27;, &#x27;auc&#x27;],
+              feature_types=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=None, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=3,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=None,
+              n_jobs=None, num_parallel_tree=None, random_state=None, ...)</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return the True Positive Rates (TPRs), False Positive Rates (FPRs),</span>
+<span class="sd">    and the threshold values, seperated by delta.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">thresh</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">delta</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">TPRs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">FPRs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="n">y_proba</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">th</span> <span class="ow">in</span> <span class="n">thresh</span><span class="p">:</span>
+        <span class="n">y_pred</span><span class="p">[</span><span class="n">y_proba</span> <span class="o">&lt;</span> <span class="n">th</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">y_pred</span><span class="p">[</span><span class="n">y_proba</span> <span class="o">&gt;=</span> <span class="n">th</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="c1"># confusion matrix</span>
+        <span class="p">(</span><span class="n">TN</span><span class="p">,</span> <span class="n">FP</span><span class="p">),</span> <span class="p">(</span><span class="n">FN</span><span class="p">,</span> <span class="n">TP</span><span class="p">)</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="n">TPR</span> <span class="o">=</span> <span class="n">TP</span> <span class="o">/</span> <span class="p">(</span><span class="n">TP</span> <span class="o">+</span> <span class="n">FN</span><span class="p">)</span>  <span class="c1"># sensitivity</span>
+        <span class="n">FPR</span> <span class="o">=</span> <span class="n">FP</span> <span class="o">/</span> <span class="p">(</span><span class="n">FP</span> <span class="o">+</span> <span class="n">TN</span><span class="p">)</span>  <span class="c1"># 1 - specificity</span>
+        <span class="n">TPRs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">TPR</span><span class="p">)</span>
+        <span class="n">FPRs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FPR</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">thresh</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here, <code>delta</code> is the difference between each of the thresholds at which ROC curve is calculated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">delta</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">y_proba</span> <span class="o">=</span> <span class="n">model_gbdt</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">get_roc_curve</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y_proba</span><span class="p">,</span> <span class="n">delta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># First subplot (Left side)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate ROC curve for your data</span>
+<span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y_proba</span><span class="p">)</span>
+
+<span class="c1"># Plot the ROC curve on the first subplot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ROC curve&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Random&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ROC curve (threshold delta = </span><span class="si">{</span><span class="n">delta</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Second subplot (Right side)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Calculate ROC curve for sklearn implementation</span>
+<span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y_proba</span><span class="p">)</span>
+
+<span class="c1"># Plot the ROC curve on the second subplot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">FPRs</span><span class="p">,</span> <span class="n">TPRs</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ROC curve&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Random&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;False Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;True Positive Rate&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Scikit-learn&#39;s ROC curve&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;lower right&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the subplots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a933d59a0e0e42d2bf8af73c189d839cf7b902af260722af5a76d9f300512bf8.png" src="../_images/a933d59a0e0e42d2bf8af73c189d839cf7b902af260722af5a76d9f300512bf8.png" />
+</div>
+</div>
+<p>We can see that implementation of the ROC Curve is aligned with Scikit-Learn and gives consistent results.</p>
+<h4>Gini score</h4>
+<div class="alert alert-block alert-info">
+Now, that we know about ROC curve, <b>AUC score</b> and <b>Gini score</b> are straightforward to understand.
+AUC stands for <b>Area under the Curve</b>, which is nothing but the area under the ROC curve formed by the predictions.  
+As we saw, a totally random prediction will have AUC score <code>0.5</code>, while a perfect classifier will have AUC score of <code>1</code>. The Gini score is a rescaled AUC score: <code>Gini=AUC*2-1</code>.</div><p>Lets check the AUC and Gini score of our model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auc_score</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y_proba</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AUC score: </span><span class="si">{</span><span class="n">auc_score</span><span class="si">:</span><span class="s2"> .4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gini score: </span><span class="si">{</span><span class="n">auc_score</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="si">:</span><span class="s2"> .4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AUC score:  0.9580
+Gini score:  0.9161
+</pre></div>
+</div>
+</div>
+</div>
+<h4>Profit curve</h4>
+<div class="alert alert-block alert-info">
+Profit curve is an extension of ROC Curve analysis for cost-sensitive learning.</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Prediction</p></th>
+<th class="head"><p>Default +</p></th>
+<th class="head"><p>Default -</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Predicted Default +</p></td>
+<td><p>{0} Correctly Predict Default</p></td>
+<td><p>{-avg_profit}	Falsely Predict Default</p></td>
+</tr>
+<tr class="row-odd"><td><p>Predicted Default -</p></td>
+<td><p>{-avg_loss} Falsely Predict Non-Default</p></td>
+<td><p>{avg_profit} Correctly Predict Non-Default</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define cost-benefit matrix based on observed losses and profits</span>
+<span class="c1"># [tp, fp], [fn, tn]: [Loss incurred, Profit lost, Loss incurred, Profit made]</span>
+<span class="n">avg_profit</span><span class="p">,</span> <span class="n">avg_loss</span> <span class="o">=</span> <span class="mi">1430</span><span class="p">,</span> <span class="mi">1454</span>
+<span class="n">cost_benefit_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">avg_profit</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">avg_loss</span><span class="p">,</span> <span class="n">avg_profit</span><span class="p">]])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cost_benefit_matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[    0 -1430]
+ [-1454  1430]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">standard_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reformat confusion matrix output from sklearn for plotting profit curve.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="p">[[</span><span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">],</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">tp</span><span class="p">]]</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">],</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">tn</span><span class="p">]])</span>
+
+
+<span class="k">def</span> <span class="nf">plot_profit_curve</span><span class="p">(</span>
+    <span class="n">cost_benefit_matrix</span><span class="p">,</span> <span class="n">y_true</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y_proba</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">     Plot profit curve.</span>
+
+<span class="sd">     Inputs:</span>
+<span class="sd">     - model object</span>
+<span class="sd">     - cost benefit matrix in the same format as the confusion matrix above</span>
+<span class="sd">     - predicted probabilities</span>
+<span class="sd">     - actual labels</span>
+<span class="sd">    - additional kwargs for matplotlib</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Profit curve data</span>
+    <span class="n">profits</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># one profit value for each T (threshold)</span>
+    <span class="n">thresholds</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">y_proba</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># For each threshold, calculate profit - starting with largest threshold</span>
+    <span class="k">for</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+        <span class="n">y_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_proba</span> <span class="o">&gt;</span> <span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">confusion_mat</span> <span class="o">=</span> <span class="n">standard_confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+        <span class="c1"># Calculate total profit for this threshold</span>
+        <span class="n">profit</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">confusion_mat</span> <span class="o">*</span> <span class="n">cost_benefit_matrix</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">))</span>
+        <span class="n">profits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">profit</span><span class="p">)</span>
+
+    <span class="c1"># Profit curve plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_true</span><span class="p">)),</span> <span class="n">profits</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">profits</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_profit_curve_df</span> <span class="o">=</span> <span class="n">plot_profit_curve</span><span class="p">(</span>
+    <span class="n">cost_benefit_matrix</span><span class="p">,</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span>
+    <span class="n">y_proba</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;fuchsia&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/519db6d2ef8937f8a25e2c1f2dc616f5836a48ec181a48a3bcf57788db56413e.png" src="../_images/519db6d2ef8937f8a25e2c1f2dc616f5836a48ec181a48a3bcf57788db56413e.png" />
+</div>
+</div>
+<h4>Somers' D score</h4>
+<div class="alert alert-block alert-info">
+<b>Somers' D</b>, often referred to as Somers' D statistic or Somers' Rank Correlation Coefficient, is a measure of the strength and direction of association between two ordinal variables. In case of binary classification, Somers'D and Gini score mean the same metric. For ordinal rankings, binning is recommended.</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">somersd</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBRFRegressor</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a synthetic regression dataset</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">noise</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">))]</span>
+
+<span class="n">ix_train</span><span class="p">,</span> <span class="n">ix_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">62</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xgb_rf</span> <span class="o">=</span> <span class="n">XGBRFRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">xgb_rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {color: black;}#sk-container-id-2 pre{padding: 0;}#sk-container-id-2 div.sk-toggleable {background-color: white;}#sk-container-id-2 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-2 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-2 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-2 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-2 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-2 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-2 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-2 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-2 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-2 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-2 div.sk-item {position: relative;z-index: 1;}#sk-container-id-2 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-2 div.sk-item::before, #sk-container-id-2 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-2 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-2 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-2 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-2 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-2 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-2 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-2 div.sk-label-container {text-align: center;}#sk-container-id-2 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-2 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>XGBRFRegressor(base_score=None, booster=None, callbacks=None,
+               colsample_bylevel=None, colsample_bytree=None, device=None,
+               early_stopping_rounds=None, enable_categorical=False,
+               eval_metric=None, feature_types=None, gamma=None,
+               grow_policy=None, importance_type=None,
+               interaction_constraints=None, max_bin=None,
+               max_cat_threshold=None, max_cat_to_onehot=None,
+               max_delta_step=None, max_depth=10, max_leaves=None,
+               min_child_weight=None, missing=nan, monotone_constraints=None,
+               multi_strategy=None, n_estimators=100, n_jobs=None,
+               num_parallel_tree=None, objective=&#x27;reg:squarederror&#x27;,
+               random_state=None, reg_alpha=None, ...)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label sk-toggleable__label-arrow">XGBRFRegressor</label><div class="sk-toggleable__content"><pre>XGBRFRegressor(base_score=None, booster=None, callbacks=None,
+               colsample_bylevel=None, colsample_bytree=None, device=None,
+               early_stopping_rounds=None, enable_categorical=False,
+               eval_metric=None, feature_types=None, gamma=None,
+               grow_policy=None, importance_type=None,
+               interaction_constraints=None, max_bin=None,
+               max_cat_threshold=None, max_cat_to_onehot=None,
+               max_delta_step=None, max_depth=10, max_leaves=None,
+               min_child_weight=None, missing=nan, monotone_constraints=None,
+               multi_strategy=None, n_estimators=100, n_jobs=None,
+               num_parallel_tree=None, objective=&#x27;reg:squarederror&#x27;,
+               random_state=None, reg_alpha=None, ...)</pre></div></div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">xgb_rf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numpy cross-tab</span>
+<span class="n">contingency_table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram2d</span><span class="p">(</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">predictions</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">200</span>
+<span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">somersd</span><span class="p">(</span><span class="n">contingency_table</span><span class="p">)</span>
+<span class="n">somers_d_score</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">statistic</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;gAUC score: </span><span class="si">{</span><span class="p">(</span><span class="n">somers_d_score</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Somers&#39; D score: </span><span class="si">{</span><span class="n">somers_d_score</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gAUC score: 79.83%
+Somers&#39; D score: 59.66%
+</pre></div>
+</div>
+</div>
+</div>
+<h4>Cumulative LGD Accuracy Ratio (CLAR)</h4>
+<div class="alert alert-block alert-info">
+Adapted from <a href="https://search.r-project.org/CRAN/refmans/VUROCS/html/clar.html">VUROCS: Volume under the ROC Surface for Multi-Class ROC Analysis</a>.
+For the purpose of discriminatory power assessment, the predicted and realised LGDs are usually mapped to a discretised LGD scale.</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">clar</span><span class="p">(</span><span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">X</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate Cumulative LGD Accuracy Ratio (CLAR).</span>
+
+<span class="sd">    CLAR measures the ability of predicted LGD categories to discriminate</span>
+<span class="sd">    realized LGD values according to Ozdemir and Miu 2009.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        y (np.ndarray): Vector of realized LGD values</span>
+<span class="sd">        X (np.ndarray): Vector of predicted LGD values</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        CLAR value for the predicted and realized LGD categories (np.float)</span>
+<span class="sd">        Share of observations as a numpy array (np.ndarray)</span>
+<span class="sd">        Cumulative share of correctly assigned LGD values as a numpy array (np.ndarray)</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: If either &#39;X&#39; or &#39;y&#39; contains NA values</span>
+<span class="sd">        ValueError: If &#39;X&#39; and &#39;y&#39; have different lengths</span>
+
+<span class="sd">    References:</span>
+<span class="sd">        Ozdemir, B., Miu, P., 2009. Basel II Implementation. A Guide to</span>
+<span class="sd">        Developing and Validating a Compliant Internal Risk Rating System.</span>
+<span class="sd">        McGraw-Hill, USA.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">X</span><span class="p">))</span> <span class="ow">or</span> <span class="nb">any</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">y</span><span class="p">)):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Both &#39;X&#39; and &#39;y&#39; must not contain NA values&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Both &#39;X&#39; and &#39;y&#39; must be of the same length&quot;</span><span class="p">)</span>
+
+    <span class="n">nx</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">y</span><span class="p">))),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">X</span> <span class="o">==</span> <span class="bp">cls</span><span class="p">)</span> <span class="k">for</span> <span class="bp">cls</span> <span class="ow">in</span> <span class="n">classes</span><span class="p">]</span>
+    <span class="n">cnum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">X</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)[</span><span class="n">index</span><span class="p">]</span>
+    <span class="n">corr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">cnum</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[:</span> <span class="n">cnum</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&gt;=</span> <span class="n">classes</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="n">corr</span> <span class="o">/=</span> <span class="n">nx</span>
+    <span class="n">corr</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">obs</span> <span class="o">=</span> <span class="n">cnum</span> <span class="o">/</span> <span class="n">nx</span>
+
+    <span class="n">res</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">corr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">corr</span><span class="p">)):</span>
+        <span class="n">res</span> <span class="o">+=</span> <span class="p">(</span><span class="n">corr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">corr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="n">obs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span>
+            <span class="n">obs</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">obs</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">corr</span><span class="p">[</span><span class="n">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">res</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">obs</span><span class="p">,</span> <span class="n">corr</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate a synthetic dataset</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Generate the first variable as random probabilities between 0 and 1</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">lgd_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Create the second variable with a specified correlation to the first</span>
+<span class="n">correlation</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># correlation</span>
+<span class="n">lgd_predicted</span> <span class="o">=</span> <span class="n">correlation</span> <span class="o">*</span> <span class="n">lgd_observed</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">correlation</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span>
+    <span class="n">num_samples</span>
+<span class="p">)</span>
+
+<span class="c1"># Ensure both variables are within the range [0, 1]</span>
+<span class="n">lgd_observed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lgd_observed</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">lgd_predicted</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lgd_predicted</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clar_score</span> <span class="o">=</span> <span class="n">clar</span><span class="p">(</span><span class="n">lgd_observed</span><span class="p">,</span> <span class="n">lgd_predicted</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CLAR: </span><span class="si">{</span><span class="n">clar_score</span><span class="si">:</span><span class="s2">.4%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CLAR: 88.7468%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">clar</span><span class="p">(</span><span class="n">lgd_observed</span><span class="p">,</span> <span class="n">lgd_predicted</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span>
+    <span class="n">clar</span><span class="p">(</span><span class="n">lgd_observed</span><span class="p">,</span> <span class="n">lgd_predicted</span><span class="p">)[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;CLAR: </span><span class="si">{</span><span class="n">clar_score</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Add a horizontal line representing perfect discrimination</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axline</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">slope</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;gray&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Cumulative </span><span class="si">% o</span><span class="s2">f observations&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Cumulative </span><span class="si">% o</span><span class="s2">f correctly assigned LGDs&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cumulative LGD Accuracy Ratio (CLAR) Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/31b5a41af4926cb3d7bd3711940ff114ecc9652b847e11a53b5904cb20cd9f8e.png" src="../_images/31b5a41af4926cb3d7bd3711940ff114ecc9652b847e11a53b5904cb20cd9f8e.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapter3"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Metrics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Calibration.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Calibration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/Chapter3/Discrimination.ipynb">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1068 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>5.1. Fairness &#8212; Risk Practitioner Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/static.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter5/Fairness';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="5. Fairness" href="Chapter5.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Risk Practitioner Handbook</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">5.1. Fairness</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../README.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Chapter5.html" class="nav-link"><span class="section-number">5. </span>Fairness</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="fairness">
+<h1><span class="section-number">5.1. </span>Fairness<a class="headerlink" href="#fairness" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">optuna</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fetch loan approval data (synthesized)</span>
+<span class="n">url</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s2">&quot;https://drive.google.com/file/d/1r6gGvL_s313ThGSU7ziZiuYr2G_yijaZ/view?usp=sharing&quot;</span>
+<span class="p">)</span>
+<span class="n">file_id</span> <span class="o">=</span> <span class="n">url</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;https://drive.google.com/uc?id=</span><span class="si">{</span><span class="n">file_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sensitive_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span>
+<span class="n">condition_gender</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Gender&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Female&quot;</span>
+
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Married&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Dependents&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Education&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Self_Employed&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Property_Area&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Sensitive_Group&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition_gender</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Sensitive_Group&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Loan_Status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s2">&quot;Loan_Status&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Y&quot;</span><span class="p">]),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.1776
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Gender&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">approval_rate</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;Loan_Status&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>approval_rate</th>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Female</th>
+      <td>0.640203</td>
+    </tr>
+    <tr>
+      <th>Male</th>
+      <td>0.731494</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code style="font-family: Karma, sans-serif; background:#a7fe01;color:black">We can see that women have a lower approval rate in the training data.</code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from https://fairlearn.org/main/auto_examples/plot_credit_loan_decisions.html</span>
+
+
+<span class="k">def</span> <span class="nf">resample_training_data</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">A</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Down-sample the majority class in the training dataset to produce a</span>
+<span class="sd">    balanced dataset with a 50/50 split in the predictive labels.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">    X: The training split of the features</span>
+<span class="sd">    y: The training split of the target labels</span>
+<span class="sd">    A: The training split of the sensitive features</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">    Tuple of X_train, Y_train, A_train where each dataset has been re-balanced.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">common_indices</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">index</span><span class="p">)</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_indices</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_indices</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">common_indices</span><span class="p">]</span>
+
+    <span class="n">negative_ids</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">positive_ids</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">y</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">balanced_ids</span> <span class="o">=</span> <span class="n">positive_ids</span><span class="o">.</span><span class="n">union</span><span class="p">(</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="n">negative_ids</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">positive_ids</span><span class="p">))</span>
+    <span class="p">)</span>
+
+    <span class="n">X_resampled</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">balanced_ids</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">y_resampled</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">balanced_ids</span><span class="p">]</span>
+    <span class="n">A_resampled</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">balanced_ids</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">X_resampled</span><span class="p">,</span> <span class="n">y_resampled</span><span class="p">,</span> <span class="n">A_resampled</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code style="font-family: Karma, sans-serif; background:#a7fe01;color:black">We resample our data to use a 50% threshold for classifying a label as approved or rejected.</code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load your dataset and preprocess it</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s2">&quot;Loan_ID&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="n">sensitive_columns</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Loan_Status&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;Sensitive_Group&quot;</span><span class="p">)</span>
+
+<span class="c1"># Split your data into an initial train and test set</span>
+<span class="n">ix_train</span><span class="p">,</span> <span class="n">ix_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average approval rate before resampling: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Resample your training data for balancing</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">A_train</span> <span class="o">=</span> <span class="n">resample_training_data</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">A</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Resample your test data to ensure consistency in rebalancing</span>
+<span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="n">A_test</span> <span class="o">=</span> <span class="n">resample_training_data</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">A</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># Concatenate the resampled data to have complete X, y, and A</span>
+<span class="n">X_b</span><span class="p">,</span> <span class="n">y_b</span><span class="p">,</span> <span class="n">A_b</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">]),</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span><span class="p">]),</span>
+    <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">A_train</span><span class="p">,</span> <span class="n">A_test</span><span class="p">]),</span>
+<span class="p">)</span>
+
+<span class="n">X_b</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">y_b</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">A_b</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Assign indexes on new data</span>
+<span class="n">ix_train_b</span><span class="p">,</span> <span class="n">ix_test_b</span> <span class="o">=</span> <span class="n">y_train</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">index</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Average approval rate after resampling: </span><span class="si">{</span><span class="n">y_b</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convert categorical features to category data type</span>
+<span class="k">for</span> <span class="n">cat</span> <span class="ow">in</span> <span class="n">categorical_features</span><span class="p">:</span>
+    <span class="n">X_b</span><span class="p">[</span><span class="n">cat</span><span class="p">]</span> <span class="o">=</span> <span class="n">X_b</span><span class="p">[</span><span class="n">cat</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average approval rate before resampling: 70.89%
+Average approval rate after resampling: 50.00%
+</pre></div>
+</div>
+</div>
+</div>
+<h4>Fairness Unaware Model</h4><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">optuna</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span><span class="p">,</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">StratifiedKFold</span>
+<span class="kn">from</span> <span class="nn">xgboost</span> <span class="kn">import</span> <span class="n">XGBClassifier</span>
+
+<span class="n">base_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;base_score&quot;</span><span class="p">:</span> <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span>
+    <span class="s2">&quot;eval_metric&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;auc&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;missing&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span>
+    <span class="s2">&quot;early_stopping_rounds&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">&quot;enable_categorical&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;tree_method&quot;</span><span class="p">:</span> <span class="s2">&quot;hist&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;random_state&quot;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">n_splits</span> <span class="o">=</span> <span class="mi">10</span>
+
+
+<span class="k">def</span> <span class="nf">objective</span><span class="p">(</span><span class="n">trial</span><span class="p">):</span>
+    <span class="n">skf</span> <span class="o">=</span> <span class="n">StratifiedKFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="n">n_splits</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+    <span class="n">accuracy_scores</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">train_idx</span><span class="p">,</span> <span class="n">val_idx</span> <span class="ow">in</span> <span class="n">skf</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]):</span>
+        <span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span>
+            <span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">y_train</span><span class="p">,</span> <span class="n">y_val</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_idx</span><span class="p">],</span>
+            <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">val_idx</span><span class="p">],</span>
+        <span class="p">)</span>
+
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;n_estimators&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s2">&quot;n_estimators&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+            <span class="s2">&quot;learning_rate&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;learning_rate&quot;</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+            <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s2">&quot;max_depth&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span>
+            <span class="s2">&quot;gamma&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;gamma&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">),</span>
+            <span class="s2">&quot;subsample&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;subsample&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.05</span><span class="p">),</span>
+            <span class="s2">&quot;colsample_bytree&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span>
+                <span class="s2">&quot;colsample_bytree&quot;</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span>
+            <span class="p">),</span>
+            <span class="s2">&quot;min_child_weight&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_int</span><span class="p">(</span><span class="s2">&quot;min_child_weight&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span>
+            <span class="s2">&quot;alpha&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;alpha&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">),</span>
+            <span class="s2">&quot;lambda&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_float</span><span class="p">(</span><span class="s2">&quot;lambda&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.005</span><span class="p">),</span>
+            <span class="s2">&quot;grow_policy&quot;</span><span class="p">:</span> <span class="n">trial</span><span class="o">.</span><span class="n">suggest_categorical</span><span class="p">(</span>
+                <span class="s2">&quot;grow_policy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;depthwise&quot;</span><span class="p">,</span> <span class="s2">&quot;lossguide&quot;</span><span class="p">]</span>
+            <span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="n">base_params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+
+        <span class="n">xgb_model</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">base_params</span><span class="p">)</span>
+        <span class="n">xgb_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">eval_set</span><span class="o">=</span><span class="p">[(</span><span class="n">X_val</span><span class="p">,</span> <span class="n">y_val</span><span class="p">)],</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">y_pred_xgb_train</span> <span class="o">=</span> <span class="n">xgb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+        <span class="n">y_pred_xgb_test</span> <span class="o">=</span> <span class="n">xgb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span>
+
+        <span class="n">train_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred_xgb_train</span><span class="p">)</span>
+        <span class="n">test_score</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_pred_xgb_test</span><span class="p">)</span>
+        
+        <span class="n">train_err</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">train_score</span>
+        <span class="n">test_err</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">test_score</span>
+        
+        <span class="n">score</span> <span class="o">=</span> <span class="n">test_score</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">train_err</span><span class="o">/</span><span class="n">test_err</span><span class="p">)</span>
+        
+        <span class="n">accuracy_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">accuracy_scores</span><span class="p">)</span>
+
+
+<span class="c1"># Create an Optuna study and optimize the objective function</span>
+<span class="n">study</span> <span class="o">=</span> <span class="n">optuna</span><span class="o">.</span><span class="n">create_study</span><span class="p">(</span><span class="n">direction</span><span class="o">=</span><span class="s2">&quot;maximize&quot;</span><span class="p">)</span>
+<span class="n">study</span><span class="o">.</span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="n">n_trials</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># Get the best hyperparameters</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">study</span><span class="o">.</span><span class="n">best_params</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Best Hyperparameters:&quot;</span><span class="p">,</span> <span class="n">best_params</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[I 2023-11-06 21:14:33,514] A new study created in memory with name: no-name-8b1657af-391f-43ed-ac50-0299f7832b87
+[I 2023-11-06 21:14:34,539] Trial 0 finished with value: 0.752321181918692 and parameters: {&#39;n_estimators&#39;: 67, &#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 4, &#39;gamma&#39;: 0.7000000000000001, &#39;subsample&#39;: 0.6, &#39;colsample_bytree&#39;: 0.95, &#39;min_child_weight&#39;: 23, &#39;alpha&#39;: 15.235, &#39;lambda&#39;: 3.96, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 0 with value: 0.752321181918692.
+[I 2023-11-06 21:14:35,073] Trial 1 finished with value: 0.7464887496046787 and parameters: {&#39;n_estimators&#39;: 23, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 8, &#39;gamma&#39;: 0.9, &#39;subsample&#39;: 0.55, &#39;colsample_bytree&#39;: 0.55, &#39;min_child_weight&#39;: 39, &#39;alpha&#39;: 8.455, &#39;lambda&#39;: 15.395, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 0 with value: 0.752321181918692.
+[I 2023-11-06 21:14:35,366] Trial 2 finished with value: 0.7321557058896484 and parameters: {&#39;n_estimators&#39;: 6, &#39;learning_rate&#39;: 0.2, &#39;max_depth&#39;: 14, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.95, &#39;colsample_bytree&#39;: 0.6, &#39;min_child_weight&#39;: 21, &#39;alpha&#39;: 11.36, &#39;lambda&#39;: 23.97, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 0 with value: 0.752321181918692.
+[I 2023-11-06 21:14:36,078] Trial 3 finished with value: 0.7473192779416016 and parameters: {&#39;n_estimators&#39;: 34, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.55, &#39;colsample_bytree&#39;: 0.89, &#39;min_child_weight&#39;: 16, &#39;alpha&#39;: 27.830000000000002, &#39;lambda&#39;: 22.05, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 0 with value: 0.752321181918692.
+[I 2023-11-06 21:14:36,611] Trial 4 finished with value: 0.7343930280926723 and parameters: {&#39;n_estimators&#39;: 56, &#39;learning_rate&#39;: 0.35, &#39;max_depth&#39;: 1, &#39;gamma&#39;: 0.6000000000000001, &#39;subsample&#39;: 0.9, &#39;colsample_bytree&#39;: 0.66, &#39;min_child_weight&#39;: 17, &#39;alpha&#39;: 25.21, &#39;lambda&#39;: 12.47, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 0 with value: 0.752321181918692.
+[I 2023-11-06 21:14:37,763] Trial 5 finished with value: 0.755519668002661 and parameters: {&#39;n_estimators&#39;: 72, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.1, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.52, &#39;min_child_weight&#39;: 3, &#39;alpha&#39;: 22.755, &#39;lambda&#39;: 10.48, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:38,484] Trial 6 finished with value: 0.746682461752884 and parameters: {&#39;n_estimators&#39;: 33, &#39;learning_rate&#39;: 0.25, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 1.0, &#39;subsample&#39;: 0.6, &#39;colsample_bytree&#39;: 0.59, &#39;min_child_weight&#39;: 23, &#39;alpha&#39;: 4.695, &#39;lambda&#39;: 16.945, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:39,651] Trial 7 finished with value: 0.7475919477943532 and parameters: {&#39;n_estimators&#39;: 94, &#39;learning_rate&#39;: 0.30000000000000004, &#39;max_depth&#39;: 5, &#39;gamma&#39;: 0.6000000000000001, &#39;subsample&#39;: 0.6, &#39;colsample_bytree&#39;: 0.97, &#39;min_child_weight&#39;: 45, &#39;alpha&#39;: 10.450000000000001, &#39;lambda&#39;: 4.255, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:40,205] Trial 8 finished with value: 0.7467984424343149 and parameters: {&#39;n_estimators&#39;: 38, &#39;learning_rate&#39;: 0.30000000000000004, &#39;max_depth&#39;: 4, &#39;gamma&#39;: 0.9, &#39;subsample&#39;: 0.7, &#39;colsample_bytree&#39;: 0.79, &#39;min_child_weight&#39;: 42, &#39;alpha&#39;: 21.23, &#39;lambda&#39;: 8.085, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:40,734] Trial 9 finished with value: 0.7346408507959851 and parameters: {&#39;n_estimators&#39;: 16, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 15, &#39;gamma&#39;: 1.0, &#39;subsample&#39;: 0.65, &#39;colsample_bytree&#39;: 0.5, &#39;min_child_weight&#39;: 19, &#39;alpha&#39;: 4.505, &#39;lambda&#39;: 29.67, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:42,063] Trial 10 finished with value: 0.7290007246048326 and parameters: {&#39;n_estimators&#39;: 83, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.0, &#39;subsample&#39;: 0.8, &#39;colsample_bytree&#39;: 0.73, &#39;min_child_weight&#39;: 2, &#39;alpha&#39;: 20.695, &#39;lambda&#39;: 9.93, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:43,792] Trial 11 finished with value: 0.734433328399163 and parameters: {&#39;n_estimators&#39;: 68, &#39;learning_rate&#39;: 0.15000000000000002, &#39;max_depth&#39;: 7, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.8400000000000001, &#39;min_child_weight&#39;: 1, &#39;alpha&#39;: 17.28, &#39;lambda&#39;: 1.6300000000000001, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:44,264] Trial 12 finished with value: 0.7176713951116235 and parameters: {&#39;n_estimators&#39;: 73, &#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 1, &#39;gamma&#39;: 0.7000000000000001, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.97, &#39;min_child_weight&#39;: 31, &#39;alpha&#39;: 14.875, &#39;lambda&#39;: 5.985, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:45,461] Trial 13 finished with value: 0.7492025226799852 and parameters: {&#39;n_estimators&#39;: 55, &#39;learning_rate&#39;: 0.1, &#39;max_depth&#39;: 5, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.7, &#39;colsample_bytree&#39;: 0.71, &#39;min_child_weight&#39;: 9, &#39;alpha&#39;: 22.23, &#39;lambda&#39;: 0.17, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:47,619] Trial 14 finished with value: 0.6307853168568236 and parameters: {&#39;n_estimators&#39;: 99, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 13, &#39;gamma&#39;: 0.0, &#39;subsample&#39;: 1.0, &#39;colsample_bytree&#39;: 0.87, &#39;min_child_weight&#39;: 34, &#39;alpha&#39;: 0.2, &#39;lambda&#39;: 11.07, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:48,499] Trial 15 finished with value: 0.7509807267911981 and parameters: {&#39;n_estimators&#39;: 72, &#39;learning_rate&#39;: 0.2, &#39;max_depth&#39;: 3, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.5, &#39;colsample_bytree&#39;: 1.0, &#39;min_child_weight&#39;: 10, &#39;alpha&#39;: 15.735000000000001, &#39;lambda&#39;: 4.9, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:49,604] Trial 16 finished with value: 0.7510627874454692 and parameters: {&#39;n_estimators&#39;: 84, &#39;learning_rate&#39;: 0.25, &#39;max_depth&#39;: 9, &#39;gamma&#39;: 0.7000000000000001, &#39;subsample&#39;: 0.8, &#39;colsample_bytree&#39;: 0.67, &#39;min_child_weight&#39;: 28, &#39;alpha&#39;: 18.355, &#39;lambda&#39;: 18.27, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 5 with value: 0.755519668002661.
+[I 2023-11-06 21:14:50,305] Trial 17 finished with value: 0.7606804791577519 and parameters: {&#39;n_estimators&#39;: 46, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 7, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.65, &#39;colsample_bytree&#39;: 0.8, &#39;min_child_weight&#39;: 9, &#39;alpha&#39;: 29.84, &#39;lambda&#39;: 7.74, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 17 with value: 0.7606804791577519.
+[I 2023-11-06 21:14:50,890] Trial 18 finished with value: 0.750902807188947 and parameters: {&#39;n_estimators&#39;: 49, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 9, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.8, &#39;min_child_weight&#39;: 8, &#39;alpha&#39;: 29.45, &#39;lambda&#39;: 13.185, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 17 with value: 0.7606804791577519.
+[I 2023-11-06 21:14:51,726] Trial 19 finished with value: 0.7455830973660353 and parameters: {&#39;n_estimators&#39;: 48, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 7, &#39;gamma&#39;: 0.1, &#39;subsample&#39;: 0.7, &#39;colsample_bytree&#39;: 0.76, &#39;min_child_weight&#39;: 50, &#39;alpha&#39;: 25.53, &#39;lambda&#39;: 7.36, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 17 with value: 0.7606804791577519.
+[I 2023-11-06 21:14:52,602] Trial 20 finished with value: 0.7559228489353162 and parameters: {&#39;n_estimators&#39;: 60, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 12, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.5, &#39;min_child_weight&#39;: 5, &#39;alpha&#39;: 25.01, &#39;lambda&#39;: 20.375, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 17 with value: 0.7606804791577519.
+[I 2023-11-06 21:14:53,497] Trial 21 finished with value: 0.7594726971887463 and parameters: {&#39;n_estimators&#39;: 64, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 12, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.51, &#39;min_child_weight&#39;: 5, &#39;alpha&#39;: 24.900000000000002, &#39;lambda&#39;: 20.17, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 17 with value: 0.7606804791577519.
+[I 2023-11-06 21:14:54,260] Trial 22 finished with value: 0.7649436050450402 and parameters: {&#39;n_estimators&#39;: 62, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 13, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.59, &#39;min_child_weight&#39;: 14, &#39;alpha&#39;: 26.465, &#39;lambda&#39;: 21.025000000000002, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:55,013] Trial 23 finished with value: 0.7487837870276947 and parameters: {&#39;n_estimators&#39;: 45, &#39;learning_rate&#39;: 0.35, &#39;max_depth&#39;: 15, &#39;gamma&#39;: 0.5, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.58, &#39;min_child_weight&#39;: 13, &#39;alpha&#39;: 29.425, &#39;lambda&#39;: 25.825, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:55,852] Trial 24 finished with value: 0.741450701868281 and parameters: {&#39;n_estimators&#39;: 59, &#39;learning_rate&#39;: 0.35, &#39;max_depth&#39;: 13, &#39;gamma&#39;: 0.5, &#39;subsample&#39;: 0.9, &#39;colsample_bytree&#39;: 0.64, &#39;min_child_weight&#39;: 13, &#39;alpha&#39;: 26.825, &#39;lambda&#39;: 19.905, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:56,684] Trial 25 finished with value: 0.7470004070073092 and parameters: {&#39;n_estimators&#39;: 82, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 9, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 0.95, &#39;colsample_bytree&#39;: 0.56, &#39;min_child_weight&#39;: 7, &#39;alpha&#39;: 24.295, &#39;lambda&#39;: 26.725, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:57,319] Trial 26 finished with value: 0.7578896897041708 and parameters: {&#39;n_estimators&#39;: 42, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 13, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 0.8, &#39;colsample_bytree&#39;: 0.63, &#39;min_child_weight&#39;: 12, &#39;alpha&#39;: 28.265, &#39;lambda&#39;: 15.05, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:58,003] Trial 27 finished with value: 0.7453908499481752 and parameters: {&#39;n_estimators&#39;: 64, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 7, &#39;gamma&#39;: 0.6000000000000001, &#39;subsample&#39;: 0.9, &#39;colsample_bytree&#39;: 0.8200000000000001, &#39;min_child_weight&#39;: 15, &#39;alpha&#39;: 18.925, &#39;lambda&#39;: 22.165, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 22 with value: 0.7649436050450402.
+[I 2023-11-06 21:14:58,588] Trial 28 finished with value: 0.7652079823188073 and parameters: {&#39;n_estimators&#39;: 25, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 1.0, &#39;colsample_bytree&#39;: 0.7, &#39;min_child_weight&#39;: 6, &#39;alpha&#39;: 29.8, &#39;lambda&#39;: 17.635, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:14:59,097] Trial 29 finished with value: 0.7504609346265171 and parameters: {&#39;n_estimators&#39;: 17, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.5, &#39;subsample&#39;: 1.0, &#39;colsample_bytree&#39;: 0.69, &#39;min_child_weight&#39;: 27, &#39;alpha&#39;: 29.975, &#39;lambda&#39;: 17.56, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:14:59,579] Trial 30 finished with value: 0.7389699682877721 and parameters: {&#39;n_estimators&#39;: 27, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 6, &#39;gamma&#39;: 0.5, &#39;subsample&#39;: 0.65, &#39;colsample_bytree&#39;: 0.76, &#39;min_child_weight&#39;: 24, &#39;alpha&#39;: 27.17, &#39;lambda&#39;: 13.185, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:00,321] Trial 31 finished with value: 0.7571170650256168 and parameters: {&#39;n_estimators&#39;: 65, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 12, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.95, &#39;colsample_bytree&#39;: 0.54, &#39;min_child_weight&#39;: 4, &#39;alpha&#39;: 23.77, &#39;lambda&#39;: 19.525000000000002, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:01,083] Trial 32 finished with value: 0.7467754697233725 and parameters: {&#39;n_estimators&#39;: 52, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 1.0, &#39;colsample_bytree&#39;: 0.61, &#39;min_child_weight&#39;: 5, &#39;alpha&#39;: 27.205000000000002, &#39;lambda&#39;: 16.135, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:01,504] Trial 33 finished with value: 0.7488566238105611 and parameters: {&#39;n_estimators&#39;: 10, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 14, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.65, &#39;colsample_bytree&#39;: 0.91, &#39;min_child_weight&#39;: 10, &#39;alpha&#39;: 25.66, &#39;lambda&#39;: 22.005, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:02,057] Trial 34 finished with value: 0.746588501697204 and parameters: {&#39;n_estimators&#39;: 25, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 8, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.95, &#39;colsample_bytree&#39;: 0.56, &#39;min_child_weight&#39;: 20, &#39;alpha&#39;: 28.55, &#39;lambda&#39;: 23.47, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:02,805] Trial 35 finished with value: 0.7512547576580844 and parameters: {&#39;n_estimators&#39;: 33, &#39;learning_rate&#39;: 0.35, &#39;max_depth&#39;: 12, &#39;gamma&#39;: 0.5, &#39;subsample&#39;: 0.9, &#39;colsample_bytree&#39;: 0.73, &#39;min_child_weight&#39;: 7, &#39;alpha&#39;: 26.59, &#39;lambda&#39;: 18.525000000000002, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:03,464] Trial 36 finished with value: 0.7496149500738502 and parameters: {&#39;n_estimators&#39;: 79, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.8, &#39;subsample&#39;: 0.55, &#39;colsample_bytree&#39;: 0.67, &#39;min_child_weight&#39;: 17, &#39;alpha&#39;: 23.77, &#39;lambda&#39;: 25.88, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:04,199] Trial 37 finished with value: 0.7459415984832638 and parameters: {&#39;n_estimators&#39;: 37, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 14, &#39;gamma&#39;: 0.6000000000000001, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.63, &#39;min_child_weight&#39;: 1, &#39;alpha&#39;: 29.88, &#39;lambda&#39;: 14.15, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:04,938] Trial 38 finished with value: 0.7428903649576102 and parameters: {&#39;n_estimators&#39;: 61, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 8, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 0.8, &#39;colsample_bytree&#39;: 0.86, &#39;min_child_weight&#39;: 11, &#39;alpha&#39;: 20.5, &#39;lambda&#39;: 16.0, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:05,719] Trial 39 finished with value: 0.7604343105377439 and parameters: {&#39;n_estimators&#39;: 29, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.1, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.53, &#39;min_child_weight&#39;: 15, &#39;alpha&#39;: 13.69, &#39;lambda&#39;: 23.830000000000002, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:06,238] Trial 40 finished with value: 0.7593700764056452 and parameters: {&#39;n_estimators&#39;: 18, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.7, &#39;colsample_bytree&#39;: 0.53, &#39;min_child_weight&#39;: 14, &#39;alpha&#39;: 13.425, &#39;lambda&#39;: 29.295, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:07,005] Trial 41 finished with value: 0.7327100107374568 and parameters: {&#39;n_estimators&#39;: 28, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 12, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.58, &#39;min_child_weight&#39;: 18, &#39;alpha&#39;: 8.19, &#39;lambda&#39;: 20.95, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:07,861] Trial 42 finished with value: 0.7488295623042592 and parameters: {&#39;n_estimators&#39;: 40, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.2, &#39;subsample&#39;: 0.75, &#39;colsample_bytree&#39;: 0.51, &#39;min_child_weight&#39;: 6, &#39;alpha&#39;: 12.450000000000001, &#39;lambda&#39;: 23.59, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:08,351] Trial 43 finished with value: 0.7337578321012017 and parameters: {&#39;n_estimators&#39;: 21, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 13, &#39;gamma&#39;: 0.1, &#39;subsample&#39;: 0.6, &#39;colsample_bytree&#39;: 0.54, &#39;min_child_weight&#39;: 3, &#39;alpha&#39;: 28.13, &#39;lambda&#39;: 24.97, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:08,722] Trial 44 finished with value: 0.7318226666086762 and parameters: {&#39;n_estimators&#39;: 13, &#39;learning_rate&#39;: 0.4, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.6000000000000001, &#39;subsample&#39;: 0.65, &#39;colsample_bytree&#39;: 0.6, &#39;min_child_weight&#39;: 21, &#39;alpha&#39;: 21.965, &#39;lambda&#39;: 22.645, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:09,435] Trial 45 finished with value: 0.752002381223498 and parameters: {&#39;n_estimators&#39;: 30, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 9, &#39;gamma&#39;: 0.30000000000000004, &#39;subsample&#39;: 0.8, &#39;colsample_bytree&#39;: 0.78, &#39;min_child_weight&#39;: 9, &#39;alpha&#39;: 15.935, &#39;lambda&#39;: 21.14, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:09,718] Trial 46 finished with value: 0.7475317154492304 and parameters: {&#39;n_estimators&#39;: 7, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 14, &#39;gamma&#39;: 0.1, &#39;subsample&#39;: 0.95, &#39;colsample_bytree&#39;: 0.52, &#39;min_child_weight&#39;: 16, &#39;alpha&#39;: 9.255, &#39;lambda&#39;: 27.835, &#39;grow_policy&#39;: &#39;depthwise&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:10,237] Trial 47 finished with value: 0.7361189366625365 and parameters: {&#39;n_estimators&#39;: 22, &#39;learning_rate&#39;: 0.35, &#39;max_depth&#39;: 11, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 0.8500000000000001, &#39;colsample_bytree&#39;: 0.56, &#39;min_child_weight&#39;: 11, &#39;alpha&#39;: 26.145, &#39;lambda&#39;: 2.46, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:11,251] Trial 48 finished with value: 0.7208467539964477 and parameters: {&#39;n_estimators&#39;: 55, &#39;learning_rate&#39;: 0.45000000000000007, &#39;max_depth&#39;: 6, &#39;gamma&#39;: 0.0, &#39;subsample&#39;: 0.55, &#39;colsample_bytree&#39;: 0.9199999999999999, &#39;min_child_weight&#39;: 4, &#39;alpha&#39;: 19.490000000000002, &#39;lambda&#39;: 18.725, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+[I 2023-11-06 21:15:12,248] Trial 49 finished with value: 0.7362236892821145 and parameters: {&#39;n_estimators&#39;: 68, &#39;learning_rate&#39;: 0.30000000000000004, &#39;max_depth&#39;: 15, &#39;gamma&#39;: 0.8, &#39;subsample&#39;: 0.7, &#39;colsample_bytree&#39;: 0.73, &#39;min_child_weight&#39;: 8, &#39;alpha&#39;: 14.105, &#39;lambda&#39;: 11.165000000000001, &#39;grow_policy&#39;: &#39;lossguide&#39;}. Best is trial 28 with value: 0.7652079823188073.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Best Hyperparameters: {&#39;n_estimators&#39;: 25, &#39;learning_rate&#39;: 0.5, &#39;max_depth&#39;: 10, &#39;gamma&#39;: 0.4, &#39;subsample&#39;: 1.0, &#39;colsample_bytree&#39;: 0.7, &#39;min_child_weight&#39;: 6, &#39;alpha&#39;: 29.8, &#39;lambda&#39;: 17.635, &#39;grow_policy&#39;: &#39;lossguide&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># best_params.update({&quot;enable_categorical&quot;: True})</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;n_estimators&#39;</span><span class="p">:</span> <span class="mi">150</span><span class="p">,</span> 
+    <span class="s1">&#39;learning_rate&#39;</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> 
+    <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+    <span class="s1">&#39;max_leaves&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> 
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="s1">&#39;subsample&#39;</span><span class="p">:</span> <span class="mf">0.8</span><span class="p">,</span> 
+    <span class="s2">&quot;enable_categorical&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s1">&#39;grow_policy&#39;</span><span class="p">:</span> <span class="s1">&#39;lossguide&#39;</span>
+<span class="p">}</span>
+
+<span class="n">xgb_clf</span> <span class="o">=</span> <span class="n">XGBClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">best_params</span><span class="p">)</span>
+
+<span class="n">xgb_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">])</span>
+
+<span class="n">predictions_trn</span> <span class="o">=</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">predictions_tst</span> <span class="o">=</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">gini_trn</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">predictions_trn</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">gini_tst</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">predictions_tst</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;Train Gini score: </span><span class="si">{</span><span class="n">gini_trn</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> 
+    <span class="sa">f</span><span class="s2">&quot;Test Gini score: </span><span class="si">{</span><span class="n">gini_tst</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Train Gini score: 94.27%
+Test Gini score: 85.22%
+</pre></div>
+</div>
+</div>
+</div>
+<h4>ROC Curve</h4><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">RocCurveDisplay</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_column</span> <span class="o">=</span> <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">prediction_column</span> <span class="o">=</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">group_column</span> <span class="o">=</span> <span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">roc_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label_column</span><span class="p">,</span> <span class="s2">&quot;proba&quot;</span><span class="p">:</span> <span class="n">prediction_column</span><span class="p">,</span> <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">group_column</span><span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax_roc_curve</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#fe595f&quot;</span><span class="p">,</span> <span class="s2">&quot;#52a1ec&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">roc_group</span> <span class="o">=</span> <span class="n">roc_data</span><span class="p">[</span><span class="n">roc_data</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Group </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span>
+        <span class="n">roc_group</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
+        <span class="n">roc_group</span><span class="p">[</span><span class="s2">&quot;proba&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_roc_curve</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">group</span><span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e610e035f4317400c50e072697bbdbf823a22cbf28e577f2fb85f9673061e9af.png" src="../_images/e610e035f4317400c50e072697bbdbf823a22cbf28e577f2fb85f9673061e9af.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fairlearn.metrics</span> <span class="kn">import</span> <span class="n">equalized_odds_difference</span>
+
+<span class="n">equalized_odds_unmitigated</span> <span class="o">=</span> <span class="n">equalized_odds_difference</span><span class="p">(</span>
+    <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span>
+    <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">]),</span>
+    <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eq Odds Unmitigated: </span><span class="si">{</span><span class="n">equalized_odds_unmitigated</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">score_unmitigated</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">roc_auc_score</span><span class="p">(</span>
+        <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="o">*</span> <span class="mi">2</span>
+    <span class="o">-</span> <span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">accuracy_unmitigated</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span>
+    <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">])</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy Unmitigated: </span><span class="si">{</span><span class="n">accuracy_unmitigated</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gini score Unmitigated: </span><span class="si">{</span><span class="n">score_unmitigated</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Eq Odds Unmitigated: 8.97%
+Accuracy Unmitigated: 84.91%
+Gini score Unmitigated: 85.22%
+</pre></div>
+</div>
+</div>
+</div>
+<h4>Threshold Optimizer</h4><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fairlearn.postprocessing</span> <span class="kn">import</span> <span class="n">ThresholdOptimizer</span>
+
+<span class="n">postprocess_est</span> <span class="o">=</span> <span class="n">ThresholdOptimizer</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">xgb_clf</span><span class="p">,</span>
+    <span class="n">constraints</span><span class="o">=</span><span class="s2">&quot;equalized_odds&quot;</span><span class="p">,</span>  <span class="c1"># match TPR and FPR across groups</span>
+    <span class="n">objective</span><span class="o">=</span><span class="s2">&quot;accuracy_score&quot;</span><span class="p">,</span>
+    <span class="n">prefit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">predict_method</span><span class="o">=</span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+    <span class="n">flip</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="c1"># Fit a ThresholdOptimizer</span>
+<span class="n">postprocess_est</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">postprocess_pred</span> <span class="o">=</span> <span class="n">postprocess_est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>
+    <span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">postprocess_pred_proba</span> <span class="o">=</span> <span class="n">postprocess_est</span><span class="o">.</span><span class="n">_pmf_predict</span><span class="p">(</span>
+    <span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">eq_odds_postprocess</span> <span class="o">=</span> <span class="n">equalized_odds_difference</span><span class="p">(</span>
+    <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">postprocess_pred</span><span class="p">,</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">score_postprocess</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">postprocess_pred_proba</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="p">)</span>
+
+<span class="n">accuracy_postprocess</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test_b</span><span class="p">],</span> <span class="n">postprocess_pred</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gini score Unmitigated: </span><span class="si">{</span><span class="n">score_unmitigated</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eq Odds PostProcess: </span><span class="si">{</span><span class="n">eq_odds_postprocess</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy PostProcess: </span><span class="si">{</span><span class="n">accuracy_postprocess</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gini score PostProcess: </span><span class="si">{</span><span class="n">score_postprocess</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gini score Unmitigated: 85.22%
+Eq Odds PostProcess: 5.91%
+Accuracy PostProcess: 82.58%
+Gini score PostProcess: 69.13%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">label_column</span> <span class="o">=</span> <span class="n">y_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">prediction_column</span> <span class="o">=</span> <span class="n">xgb_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">postprocess_pred_proba</span> <span class="o">=</span> <span class="n">postprocess_est</span><span class="o">.</span><span class="n">_pmf_predict</span><span class="p">(</span>
+    <span class="n">X_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">],</span> <span class="n">sensitive_features</span><span class="o">=</span><span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span>
+<span class="p">)[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">mitigation_column</span> <span class="o">=</span> <span class="n">postprocess_pred_proba</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">group_column</span> <span class="o">=</span> <span class="n">A_b</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train_b</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">roc_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="n">label_column</span><span class="p">,</span>
+        <span class="s2">&quot;proba&quot;</span><span class="p">:</span> <span class="n">prediction_column</span><span class="p">,</span>
+        <span class="s2">&quot;mitigated_proba&quot;</span><span class="p">:</span> <span class="n">mitigation_column</span><span class="p">,</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">group_column</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax_roc_curve</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;#fe595f&quot;</span><span class="p">,</span> <span class="s2">&quot;#52a1ec&quot;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">group</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]:</span>
+    <span class="n">roc_group</span> <span class="o">=</span> <span class="n">roc_data</span><span class="p">[</span><span class="n">roc_data</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">group</span><span class="p">]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Group </span><span class="si">{</span><span class="n">group</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="n">RocCurveDisplay</span><span class="o">.</span><span class="n">from_predictions</span><span class="p">(</span>
+        <span class="n">roc_group</span><span class="p">[</span><span class="s2">&quot;label&quot;</span><span class="p">],</span>
+        <span class="n">roc_group</span><span class="p">[</span><span class="s2">&quot;mitigated_proba&quot;</span><span class="p">],</span>
+        <span class="n">name</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax_roc_curve</span><span class="p">,</span>
+        <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">group</span><span class="p">],</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/397f11ba35ed5366001c3ea862dfcb3ba7be49925a2c5d27a31b3cab6f7043ee.png" src="../_images/397f11ba35ed5366001c3ea862dfcb3ba7be49925a2c5d27a31b3cab6f7043ee.png" />
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapter5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Chapter5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>Fairness</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/Chapter5/Fairness.ipynb">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

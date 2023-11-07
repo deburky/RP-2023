@@ -1,0 +1,870 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2.6. XGBoost &#8212; Risk Practitioner Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/static.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter2/XGBoost';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.7. TabNet" href="TabNet.html" />
+    <link rel="prev" title="2.5. WOE" href="WOE.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Risk Practitioner Handbook</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter5/Chapter5.html">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="WOE.html">2.5. WOE</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.6. XGBoost</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TabNet.html">2.7. TabNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GNN.html">2.8. GNN</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../README.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="Chapter2.html" class="nav-link"><span class="section-number">2. </span>Models</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="xgboost">
+<h1><span class="section-number">2.6. </span>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h1>
+<div class="alert alert-block alert-info">
+    XGBoost is an optimized distributed gradient boosting library designed to be highly efficient, flexible and portable.
+</div><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">make_classification</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="o">%</span><span class="k">config</span> InlineBackend.figure_format = &#39;retina&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate a synthetic dataset</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_classification</span><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">50000</span><span class="p">,</span> <span class="n">n_features</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">n_classes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">n_informative</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+<span class="p">)</span>
+
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">X</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">))]</span>
+
+<span class="n">ix_train</span><span class="p">,</span> <span class="n">ix_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">62</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an XGBoost model with random forests</span>
+<span class="n">model_gbdt</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBClassifier</span><span class="p">(</span>
+    <span class="n">booster</span><span class="o">=</span><span class="s2">&quot;gbtree&quot;</span><span class="p">,</span>
+    <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>  <span class="c1"># trees</span>
+    <span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">subsample</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">reg_alpha</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">reg_lambda</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+    <span class="n">min_child_weight</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">colsample_bynode</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span>
+    <span class="n">num_parallel_tree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># trees per forest</span>
+    <span class="n">eval_metric</span><span class="o">=</span><span class="s2">&quot;logloss&quot;</span><span class="p">,</span>  <span class="c1"># evaluation metric</span>
+    <span class="n">early_stopping_rounds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">grow_policy</span><span class="o">=</span><span class="s2">&quot;lossguide&quot;</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">evalset</span> <span class="o">=</span> <span class="p">[(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">]),</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">])]</span>
+
+<span class="c1"># Fit the model to the generated dataset</span>
+<span class="n">model_gbdt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">eval_set</span><span class="o">=</span><span class="n">evalset</span><span class="p">)</span>
+
+<span class="c1"># Make predictions using the model</span>
+<span class="n">predictions_trn</span> <span class="o">=</span> <span class="n">model_gbdt</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">predictions_tst</span> <span class="o">=</span> <span class="n">model_gbdt</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">])[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">gini_trn</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_train</span><span class="p">],</span> <span class="n">predictions_trn</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">gini_tst</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ix_test</span><span class="p">],</span> <span class="n">predictions_tst</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Train Gini score: </span><span class="si">{</span><span class="n">gini_trn</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="sa">f</span><span class="s2">&quot;Test Gini score: </span><span class="si">{</span><span class="n">gini_tst</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0]	validation_0-logloss:0.54626	validation_1-logloss:0.54642
+[1]	validation_0-logloss:0.45594	validation_1-logloss:0.45765
+[2]	validation_0-logloss:0.39858	validation_1-logloss:0.40107
+[3]	validation_0-logloss:0.35277	validation_1-logloss:0.35585
+[4]	validation_0-logloss:0.31624	validation_1-logloss:0.32011
+[5]	validation_0-logloss:0.29152	validation_1-logloss:0.29628
+[6]	validation_0-logloss:0.26528	validation_1-logloss:0.27063
+[7]	validation_0-logloss:0.24296	validation_1-logloss:0.24831
+[8]	validation_0-logloss:0.22727	validation_1-logloss:0.23330
+[9]	validation_0-logloss:0.21415	validation_1-logloss:0.22061
+[10]	validation_0-logloss:0.20207	validation_1-logloss:0.20886
+[11]	validation_0-logloss:0.19335	validation_1-logloss:0.20034
+[12]	validation_0-logloss:0.18805	validation_1-logloss:0.19538
+[13]	validation_0-logloss:0.18084	validation_1-logloss:0.18858
+[14]	validation_0-logloss:0.17538	validation_1-logloss:0.18351
+[15]	validation_0-logloss:0.17257	validation_1-logloss:0.18117
+[16]	validation_0-logloss:0.16776	validation_1-logloss:0.17659
+[17]	validation_0-logloss:0.16356	validation_1-logloss:0.17265
+[18]	validation_0-logloss:0.16064	validation_1-logloss:0.16980
+[19]	validation_0-logloss:0.15700	validation_1-logloss:0.16640
+[20]	validation_0-logloss:0.15391	validation_1-logloss:0.16389
+[21]	validation_0-logloss:0.15185	validation_1-logloss:0.16218
+[22]	validation_0-logloss:0.15053	validation_1-logloss:0.16106
+[23]	validation_0-logloss:0.14841	validation_1-logloss:0.15911
+[24]	validation_0-logloss:0.14723	validation_1-logloss:0.15813
+[25]	validation_0-logloss:0.14551	validation_1-logloss:0.15651
+[26]	validation_0-logloss:0.14437	validation_1-logloss:0.15562
+[27]	validation_0-logloss:0.14407	validation_1-logloss:0.15545
+[28]	validation_0-logloss:0.14320	validation_1-logloss:0.15454
+[29]	validation_0-logloss:0.14204	validation_1-logloss:0.15350
+[30]	validation_0-logloss:0.14118	validation_1-logloss:0.15280
+[31]	validation_0-logloss:0.14047	validation_1-logloss:0.15227
+[32]	validation_0-logloss:0.13975	validation_1-logloss:0.15167
+[33]	validation_0-logloss:0.13954	validation_1-logloss:0.15151
+[34]	validation_0-logloss:0.13935	validation_1-logloss:0.15128
+[35]	validation_0-logloss:0.13932	validation_1-logloss:0.15122
+[36]	validation_0-logloss:0.13858	validation_1-logloss:0.15055
+[37]	validation_0-logloss:0.13796	validation_1-logloss:0.14996
+[38]	validation_0-logloss:0.13742	validation_1-logloss:0.14966
+[39]	validation_0-logloss:0.13674	validation_1-logloss:0.14929
+[40]	validation_0-logloss:0.13611	validation_1-logloss:0.14868
+[41]	validation_0-logloss:0.13611	validation_1-logloss:0.14868
+[42]	validation_0-logloss:0.13522	validation_1-logloss:0.14794
+[43]	validation_0-logloss:0.13515	validation_1-logloss:0.14796
+[44]	validation_0-logloss:0.13479	validation_1-logloss:0.14759
+[45]	validation_0-logloss:0.13473	validation_1-logloss:0.14759
+[46]	validation_0-logloss:0.13425	validation_1-logloss:0.14741
+[47]	validation_0-logloss:0.13407	validation_1-logloss:0.14742
+[48]	validation_0-logloss:0.13367	validation_1-logloss:0.14724
+[49]	validation_0-logloss:0.13336	validation_1-logloss:0.14702
+[50]	validation_0-logloss:0.13311	validation_1-logloss:0.14680
+[51]	validation_0-logloss:0.13307	validation_1-logloss:0.14680
+[52]	validation_0-logloss:0.13278	validation_1-logloss:0.14661
+[53]	validation_0-logloss:0.13230	validation_1-logloss:0.14628
+[54]	validation_0-logloss:0.13222	validation_1-logloss:0.14626
+[55]	validation_0-logloss:0.13219	validation_1-logloss:0.14625
+[56]	validation_0-logloss:0.13170	validation_1-logloss:0.14569
+[57]	validation_0-logloss:0.13141	validation_1-logloss:0.14539
+[58]	validation_0-logloss:0.13141	validation_1-logloss:0.14539
+[59]	validation_0-logloss:0.13080	validation_1-logloss:0.14492
+[60]	validation_0-logloss:0.13080	validation_1-logloss:0.14492
+[61]	validation_0-logloss:0.13080	validation_1-logloss:0.14492
+[62]	validation_0-logloss:0.13011	validation_1-logloss:0.14428
+[63]	validation_0-logloss:0.13011	validation_1-logloss:0.14428
+[64]	validation_0-logloss:0.13011	validation_1-logloss:0.14428
+[65]	validation_0-logloss:0.13004	validation_1-logloss:0.14431
+[66]	validation_0-logloss:0.13004	validation_1-logloss:0.14431
+[67]	validation_0-logloss:0.13004	validation_1-logloss:0.14431
+[68]	validation_0-logloss:0.13004	validation_1-logloss:0.14431
+[69]	validation_0-logloss:0.12946	validation_1-logloss:0.14371
+[70]	validation_0-logloss:0.12939	validation_1-logloss:0.14361
+[71]	validation_0-logloss:0.12939	validation_1-logloss:0.14361
+[72]	validation_0-logloss:0.12930	validation_1-logloss:0.14364
+[73]	validation_0-logloss:0.12917	validation_1-logloss:0.14361
+[74]	validation_0-logloss:0.12907	validation_1-logloss:0.14365
+[75]	validation_0-logloss:0.12907	validation_1-logloss:0.14365
+[76]	validation_0-logloss:0.12907	validation_1-logloss:0.14365
+[77]	validation_0-logloss:0.12867	validation_1-logloss:0.14326
+[78]	validation_0-logloss:0.12824	validation_1-logloss:0.14290
+[79]	validation_0-logloss:0.12809	validation_1-logloss:0.14273
+[80]	validation_0-logloss:0.12802	validation_1-logloss:0.14270
+[81]	validation_0-logloss:0.12796	validation_1-logloss:0.14270
+[82]	validation_0-logloss:0.12781	validation_1-logloss:0.14264
+[83]	validation_0-logloss:0.12781	validation_1-logloss:0.14264
+[84]	validation_0-logloss:0.12770	validation_1-logloss:0.14262
+[85]	validation_0-logloss:0.12765	validation_1-logloss:0.14263
+[86]	validation_0-logloss:0.12745	validation_1-logloss:0.14256
+[87]	validation_0-logloss:0.12727	validation_1-logloss:0.14237
+[88]	validation_0-logloss:0.12717	validation_1-logloss:0.14238
+[89]	validation_0-logloss:0.12717	validation_1-logloss:0.14238
+[90]	validation_0-logloss:0.12710	validation_1-logloss:0.14241
+[91]	validation_0-logloss:0.12682	validation_1-logloss:0.14217
+[92]	validation_0-logloss:0.12682	validation_1-logloss:0.14217
+[93]	validation_0-logloss:0.12682	validation_1-logloss:0.14217
+[94]	validation_0-logloss:0.12675	validation_1-logloss:0.14215
+[95]	validation_0-logloss:0.12675	validation_1-logloss:0.14215
+[96]	validation_0-logloss:0.12660	validation_1-logloss:0.14212
+[97]	validation_0-logloss:0.12660	validation_1-logloss:0.14212
+[98]	validation_0-logloss:0.12660	validation_1-logloss:0.14212
+[99]	validation_0-logloss:0.12625	validation_1-logloss:0.14187
+[100]	validation_0-logloss:0.12599	validation_1-logloss:0.14169
+[101]	validation_0-logloss:0.12563	validation_1-logloss:0.14133
+[102]	validation_0-logloss:0.12552	validation_1-logloss:0.14130
+[103]	validation_0-logloss:0.12552	validation_1-logloss:0.14130
+[104]	validation_0-logloss:0.12552	validation_1-logloss:0.14130
+[105]	validation_0-logloss:0.12532	validation_1-logloss:0.14121
+[106]	validation_0-logloss:0.12527	validation_1-logloss:0.14122
+[107]	validation_0-logloss:0.12527	validation_1-logloss:0.14122
+[108]	validation_0-logloss:0.12527	validation_1-logloss:0.14122
+[109]	validation_0-logloss:0.12517	validation_1-logloss:0.14126
+[110]	validation_0-logloss:0.12517	validation_1-logloss:0.14126
+[111]	validation_0-logloss:0.12509	validation_1-logloss:0.14124
+[112]	validation_0-logloss:0.12470	validation_1-logloss:0.14092
+[113]	validation_0-logloss:0.12470	validation_1-logloss:0.14092
+[114]	validation_0-logloss:0.12470	validation_1-logloss:0.14092
+[115]	validation_0-logloss:0.12457	validation_1-logloss:0.14072
+[116]	validation_0-logloss:0.12447	validation_1-logloss:0.14066
+[117]	validation_0-logloss:0.12434	validation_1-logloss:0.14052
+[118]	validation_0-logloss:0.12430	validation_1-logloss:0.14057
+[119]	validation_0-logloss:0.12412	validation_1-logloss:0.14045
+[120]	validation_0-logloss:0.12401	validation_1-logloss:0.14042
+[121]	validation_0-logloss:0.12401	validation_1-logloss:0.14042
+[122]	validation_0-logloss:0.12401	validation_1-logloss:0.14042
+[123]	validation_0-logloss:0.12401	validation_1-logloss:0.14042
+[124]	validation_0-logloss:0.12398	validation_1-logloss:0.14041
+[125]	validation_0-logloss:0.12384	validation_1-logloss:0.14038
+[126]	validation_0-logloss:0.12379	validation_1-logloss:0.14038
+[127]	validation_0-logloss:0.12379	validation_1-logloss:0.14038
+[128]	validation_0-logloss:0.12379	validation_1-logloss:0.14038
+[129]	validation_0-logloss:0.12379	validation_1-logloss:0.14038
+[130]	validation_0-logloss:0.12379	validation_1-logloss:0.14038
+[131]	validation_0-logloss:0.12341	validation_1-logloss:0.14001
+[132]	validation_0-logloss:0.12341	validation_1-logloss:0.14001
+[133]	validation_0-logloss:0.12341	validation_1-logloss:0.14001
+[134]	validation_0-logloss:0.12336	validation_1-logloss:0.14000
+[135]	validation_0-logloss:0.12315	validation_1-logloss:0.13985
+[136]	validation_0-logloss:0.12315	validation_1-logloss:0.13985
+[137]	validation_0-logloss:0.12281	validation_1-logloss:0.13958
+[138]	validation_0-logloss:0.12281	validation_1-logloss:0.13958
+[139]	validation_0-logloss:0.12281	validation_1-logloss:0.13958
+[140]	validation_0-logloss:0.12281	validation_1-logloss:0.13958
+[141]	validation_0-logloss:0.12270	validation_1-logloss:0.13948
+[142]	validation_0-logloss:0.12262	validation_1-logloss:0.13947
+[143]	validation_0-logloss:0.12247	validation_1-logloss:0.13936
+[144]	validation_0-logloss:0.12247	validation_1-logloss:0.13936
+[145]	validation_0-logloss:0.12243	validation_1-logloss:0.13934
+[146]	validation_0-logloss:0.12237	validation_1-logloss:0.13936
+[147]	validation_0-logloss:0.12237	validation_1-logloss:0.13936
+[148]	validation_0-logloss:0.12237	validation_1-logloss:0.13936
+[149]	validation_0-logloss:0.12232	validation_1-logloss:0.13933
+[150]	validation_0-logloss:0.12232	validation_1-logloss:0.13933
+[151]	validation_0-logloss:0.12226	validation_1-logloss:0.13934
+[152]	validation_0-logloss:0.12226	validation_1-logloss:0.13934
+[153]	validation_0-logloss:0.12201	validation_1-logloss:0.13921
+[154]	validation_0-logloss:0.12187	validation_1-logloss:0.13920
+[155]	validation_0-logloss:0.12181	validation_1-logloss:0.13921
+[156]	validation_0-logloss:0.12177	validation_1-logloss:0.13923
+[157]	validation_0-logloss:0.12177	validation_1-logloss:0.13923
+[158]	validation_0-logloss:0.12149	validation_1-logloss:0.13904
+[159]	validation_0-logloss:0.12149	validation_1-logloss:0.13904
+[160]	validation_0-logloss:0.12131	validation_1-logloss:0.13888
+[161]	validation_0-logloss:0.12115	validation_1-logloss:0.13898
+[162]	validation_0-logloss:0.12099	validation_1-logloss:0.13895
+[163]	validation_0-logloss:0.12099	validation_1-logloss:0.13895
+[164]	validation_0-logloss:0.12095	validation_1-logloss:0.13893
+[165]	validation_0-logloss:0.12091	validation_1-logloss:0.13892
+[166]	validation_0-logloss:0.12091	validation_1-logloss:0.13892
+[167]	validation_0-logloss:0.12089	validation_1-logloss:0.13891
+[168]	validation_0-logloss:0.12089	validation_1-logloss:0.13891
+[169]	validation_0-logloss:0.12089	validation_1-logloss:0.13891
+[170]	validation_0-logloss:0.12089	validation_1-logloss:0.13891
+Train Gini score: 98.15%
+Test Gini score: 97.30%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># check how many trees are trained</span>
+<span class="n">booster_</span> <span class="o">=</span> <span class="n">model_gbdt</span><span class="o">.</span><span class="n">get_booster</span><span class="p">()</span>
+<span class="n">num_trees</span> <span class="o">=</span> <span class="n">booster_</span><span class="o">.</span><span class="n">best_iteration</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of trees in the final model: </span><span class="si">{</span><span class="n">num_trees</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># get a dump</span>
+<span class="n">booster_dump</span> <span class="o">=</span> <span class="n">booster_</span><span class="o">.</span><span class="n">get_dump</span><span class="p">()</span>
+<span class="n">num_trees_dump</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">booster_dump</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total number of trees used in estimation: </span><span class="si">{</span><span class="n">num_trees_dump</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of trees in the final model: 161
+Total number of trees used in estimation: 342
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get margins (log odds, leaf weights)</span>
+<span class="n">booster_</span><span class="o">.</span><span class="n">trees_to_dataframe</span><span class="p">()[</span><span class="n">booster_</span><span class="o">.</span><span class="n">trees_to_dataframe</span><span class="p">()</span><span class="o">.</span><span class="n">Feature</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Leaf&quot;</span><span class="p">])][</span>
+    <span class="s2">&quot;Gain&quot;</span>
+<span class="p">][:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9    -0.225236
+10    0.190313
+20   -0.143501
+21   -0.134992
+27   -0.000000
+29   -0.222734
+31    0.010724
+32   -0.110243
+33    0.161738
+34   -0.000000
+Name: Gain, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<h4> Loss Curve </h4>
+<p><a class="reference external" href="https://pythonguides.com/matplotlib-update-plot-in-loop/">PythonGuides.com: Matplotlib Update Plot in Loop</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.animation</span> <span class="kn">import</span> <span class="n">FuncAnimation</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> widget
+
+<span class="c1"># Import the loss curve</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model_gbdt</span><span class="o">.</span><span class="n">evals_result</span><span class="p">()</span>
+<span class="n">loss_values</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;validation_1&quot;</span><span class="p">][</span><span class="s2">&quot;logloss&quot;</span><span class="p">]</span>
+
+<span class="c1"># Create figure and subplot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">x_plot</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y_plot</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Plot</span>
+<span class="c1"># (plot_1,) = ax.plot(x, y)</span>
+<span class="p">(</span><span class="n">plot_1</span><span class="p">,)</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#a7fe01&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Log Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">loss_values</span><span class="p">),</span> <span class="nb">min</span><span class="p">(</span><span class="n">loss_values</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">loss_values</span><span class="p">)])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;top&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Number of Trees&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Log Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Learning Curve&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># Animation Function</span>
+
+
+<span class="k">def</span> <span class="nf">animate_plot</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">x_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">y_plot</span> <span class="o">=</span> <span class="n">loss_values</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">plot_1</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">plot_1</span><span class="p">,)</span>
+
+
+<span class="c1"># Animated Function</span>
+<span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate_plot</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">loss_values</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Save as gif</span>
+<span class="c1"># path_to_export = &quot;/Users/deburky/Documents/python/risk-practitioner-ebook/risk-practitioner/images&quot;</span>
+<span class="c1"># ani.save(f&quot;{path_to_export}/learning_curve.gif&quot;, writer=&quot;pillow&quot;, fps=10, dpi=600)</span>
+<span class="c1"># ani.save(f&quot;learning_curve.gif&quot;, writer=&quot;pillow&quot;, fps=10, dpi=600)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "5fd1a90ccc784bd99048119481a2dc05", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapter2"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="WOE.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2.5. </span>WOE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TabNet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.7. </span>TabNet</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/Chapter2/XGBoost.ipynb">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

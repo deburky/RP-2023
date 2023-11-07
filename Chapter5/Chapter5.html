@@ -1,0 +1,599 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Fairness &#8212; Risk Practitioner Handbook</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/static.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/tabs.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chapter5/Chapter5';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.1. Fairness" href="Fairness.html" />
+    <link rel="prev" title="4.1. Explainability" href="../Chapter4/SHAP.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Risk Practitioner Handbook</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary" tabindex="0">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter1/Chapter1.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter2/Chapter2.html">
+                        Models
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter3/Chapter3.html">
+                        Metrics
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../Chapter4/Chapter4.html">
+                        Explainability
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="#">
+                        Fairness
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Fairness.html">5.1. Fairness</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumb">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../README.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span...</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="fairness">
+<h1><span class="section-number">5. </span>Fairness<a class="headerlink" href="#fairness" title="Permalink to this heading">#</a></h1>
+<span style="font-family: Karma, sans-serif;">
+<p>Credit-risk models learn from historical data and encode the past, which may be replete with biases. This creates a fair lending risk that may appear at different stages of a credit scoring model development. It’s crucial to keep an eye on fair lending risk to ensure the models work fairly and don’t perpetuate unfair practices in the area of loan decision-making. Examples of unfair lending practices are quite common, for example, <a href="https://link.springer.com/article/10.1007/s43681-022-00234-9">AI discrimination in mortgage applications study</a> showed that standard AI reduced the black applicants’ probability of being approved for a loan from 46% to 33%.</p>
+<p>To build fair and trustworthy credit scoring systems governing access to credit, we need models that are transparent and interpretable. This way, we can identify and fix any biases or unfairness before they cause harm. When we use machine learning for credit scoring, it’s essential to make sure the system treats everyone fairly, giving everyone an equal chance at getting a loan.</p>
+<p>After a model is built, bias in a credit-risk model can be assessed and corrected in the post-processing phase. This can be achieved by recalibrating the outputs, for example by making it easier for certain minority groups to get a positive model outcome by matching true positive and false positive rates across groups. Most of the fairness risk assessment methods are focused on binary classification, but forms of binning of continuous data may be used to analyze continuous financial behavior.</p>
+<p><img alt="Image" src="../_images/bias_approval_rate.png" /></p>
+<p><b>Negative Sampling</b><br></p>
+<p>Defining cut-offs is a crucial step before assessing fairness metrics. A cut-off can be understood as a threshold used to convert the model’s probability output to a binary output of 0 or 1 (usually the choice is 0.5, but it may vary across problems and be dependent on class imbalance). Given a balanced distribution of positive and negative ground truth labels, establishing a threshold for classifying prediction as Y = 1  at a 50% probability is a convenient approach allowing to use a diverse set of classification metrics. In binary scenarios, we commonly regard the outcome Y = 1 as the “advantaged” result, for instance, representing being “approved for a loan”.</p>
+<p><b>Equal Opportunity</b><br></p>
+<p>We expect a fair credit-risk model to ensure that people who pay back their loan, have an equal opportunity of getting the loan in the first place.</p>
+<blockquote>
+<p><b>True Positive Rate (TPR, Recall):</b> The rate of correctly identified positive cases (e.g., loan approvals) for each group.</p>
+</blockquote>
+<p>TPR (Recall) can be interpreted as the percentage of people who have rightfully benefitted from the model (got a loan approved). This means the TPR (recall) is the percentage of good customers we gave loans to. Under <b>Equal Opportunity</b> we consider a model to be fair if the TPRs of the privileged and unprivileged groups are equal.</p>
+<p><b>Equalized Odds</b><br></p>
+<p><img alt="Image" src="../_images/loan_interest_rate.png" /></p>
+<p><b>Equalized Odds</b> is a fairness metric that focuses on the performance of a machine learning model in the context of protected characteristics (e.g., race, gender). Specifically, it evaluates whether the model’s predictions are equally accurate for different demographic groups, particularly in binary classification tasks such as approving or denying a loan.</p>
+<blockquote>
+<p><b>False Positive Rate (FPR, Fall-Out):</b> The rate of incorrectly identified positive cases (e.g., loan approvals) for each group.</p>
+</blockquote>
+<p>FPR is the percentage of actual negatives incorrectly predicted as positive. This can be interpreted as the percentage of people who have wrongfully benefited from the model.</p>
+<p>Like with <b>Equal Opportunity</b>, this definition requires that the TPRs are equal. Now we also require that the FPRs are equal. This means <b>Equalized Odds</b> can be thought of as a stricter definition of fairness. It also makes sense that for a model to be fair overall benefit should be equal. That is a similar percentage of the groups should both rightfully and wrongfully benefit.</p>
+<p><b>Equalized Odds Difference</b><br></p>
+<p>We can view these metrics in perspective through <b>Equalized Odds Difference</b>. It is defined as the greater of the differences in TPRs and FPRs between two groups. When <b>Equalized Odds Difference</b> is equal to 0, it means that there is no disparity in fairness between groups.</p>
+<blockquote>
+<p><b>Average Equalized Odds Difference:</b> the difference in means of TPRs and FPRs for predictions on unprivileged and privileged groups.</p>
+</blockquote>
+<p><b>Equalized Odds</b> is achieved when the TPR and FPR are approximately equal across different groups, indicating that the model provides equal opportunities for all applicants with similar creditworthiness regardless of gender or nationality. In other words, individuals from different groups with the same credit risk should have a similar chance of being approved or denied a loan.</p>
+<p>In the following sections, you will find resources about Fairness in a growing collection of resources and a notebook exploring a post-processing technique with <a href="https://fairlearn.org/">Fairlearn</a> building upon their credit-card loans use-case.</p>
+<center><code> ... </code></center>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Evaluating Fairness in Machine Learning</p></p>
+<p><b>fairMLHealth</b></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/KenSciResearch/fairMLHealth/blob/integration/docs/resources/Evaluating_Fairness.md">Read Here</a></p>
+<ul>
+<li><p>This reference introduces concepts, methods, and libraries for measuring fairness in ML as it relates to problems in healthcare. This is a revamped version of the tutorial presented at the KDD 2020 Tutorial on Fairness in Machine Learning for Healthcare. There are abundant other publications covering the theoretical basis for fairness metrics, with many online and academic resources covering the details of specific fairness measures. Many of these excellent references fall short of discussing edge cases as well as the practical and philosophical considerations when evaluating real models for real customers.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Credit Loan Decisions</p></p>
+<p><b>Microsoft Fairlearn</b></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fairlearn.org/main/auto_examples/plot_credit_loan_decisions.html">Read Here</a></p>
+<ul>
+<li><p>In this case study, the authors aim to replicate the work conducted in a white paper co-authored by Microsoft and EY, which focuses on addressing gender-related performance disparities in financial lending decisions. The study involves training a fairness-unaware model to predict loan defaults using a credit loan dataset. The Fairlearn toolkit is employed to assess the model’s fairness through various metrics. Additionally, two strategies for mitigating unfairness are applied, and their outcomes are compared to the original model’s results. To simulate the outcome disparity present in the original dataset, a semi-synthetic feature is introduced into an available public dataset, as the original dataset remains inaccessible to the researcher.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Fairness and Machine Learning: Limitations and Opportunities</p></p>
+<p><b>fairmlbook.org</b></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://fairmlbook.org/">Read Here</a></p>
+<ul>
+<li><p>This resource serves as an introductory guide to the realm of fairness in machine learning. The book delves into the intellectual bedrock of fairness considerations in the context of automated decision-making. It scrutinizes the potential risks intrinsic to various machine learning applications.</p></li>
+</ul>
+</li>
+</ul>
+<p><br><p style="font-size: 1.2em; font-weight: bold;">Explainability &amp; Fairness in Machine Learning for Credit Underwriting</p></p>
+<p><b>FinRegLab</b></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://finreglab.org/wp-content/uploads/2023/07/FRL_ML-FindingsOverview_Final.pdf">Read Here</a></p>
+<ul>
+<li><p>This report examines the implications of using explainability and fairness techniques in ML-based underwriting of credit decisions. Explainability and debiasing techniques can address regulatory concerns and offer opportunities for oversight and management.
+</span></p></li>
+</ul>
+</li>
+</ul>
+<p><br><details><summary class="summary-box"><b>More resources to read</b><br> Explore additional resources and references for in-depth understanding of the topics covered in this section.</summary>
+<br></p>
+  <p>
+  <a href="https://arxiv.org/abs/1610.02413">Equality of Opportunity in Supervised Learning</a><br>
+  </p>
+  <p>
+  <a href="https://arxiv.org/pdf/1709.02012.pdf)">On Fairness and Calibration</a><br>
+  </p>
+  <p>
+  <a href="https://www.consumerfinance.gov/about-us/blog/algorithms-artificial-intelligence-fairness-in-home-appraisals/">Algorithms, Artificial Intelligence, and Fairness in Home Appraisals - CFPB
+</a><br>
+  </p>
+</details>
+</span>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chapter5"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Chapter4/SHAP.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.1. </span>Explainability</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Fairness.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.1. </span>Fairness</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/Chapter5/Chapter5.md">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.14.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
