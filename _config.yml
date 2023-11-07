@@ -37,3 +37,6 @@ launch_buttons:
   colab_url: "https://colab.research.google.com"
 
 # theme: jekyll-theme-slate
+
+html:
+  home_page_in_navbar: true

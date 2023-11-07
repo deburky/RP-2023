@@ -3,8 +3,9 @@
 
 format: jb-book
 root: README.md
-options:  
+options: 
   numbered: True
+
 chapters:
 - file: Chapter1/Chapter1.md
   sections:

@@ -24,7 +24,7 @@ Such models are relatively easy to develop and validate. At the same time, such 
 
 ![Image](../images/woe.png)
 
-This simplified example showns how we can use probabilities to explain the logic of scorecard building with WOE (actual score estimation is performed in the log odds space).
+This simplified example shows how we can use probabilities to explain the logic of a scorecard with two features using the WOE technique (actual score estimation is performed with log odds values).
 
 <b>XGBoost</b>, a powerful gradient boosting algorithm, excels in handling complex tabular data with many unique interactions. Its superior performance on tabular datasets has made it a popular choice for a large set of problems. Binary classification trees are constructed sequentially, forming an ensemble of weak learner trees (sometimes even as small as decision stumps) with the objective to minimize loss. In the context of binary classification, unless specified differently, <b>XGBoost</b> uses a logistic loss (Log Loss) as an objective function, which allows to interpret its leaf weights as log odds similar to WOE bins.
 

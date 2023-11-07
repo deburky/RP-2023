@@ -15,15 +15,13 @@ The idea to write this handbook came to me after I started to research convenien
 
 There are several reasons why financial risk as a domain of specialty is special and not easy to unlock:
 
+* Credit scoring a high-risk application of machine learning, which is governed by specific requirements for the end-to-end model development cycle. This is very different from a research process of unconstrained model prototyping aimed at maximimizing the accuracy metric.
+* Financial data has a very high value according to <a href="https://edmcouncil.org/wp-content/uploads/2023/03/EDM_Council_Data_ROI_SIG_Value_of_Data_29_Mar_2023_.pdf">this study</a> and is one of the most expensive to obtain, which makes datasets used very specific to an institution running lending operations.
+* Internal tools developed for credit risk require a solid data foundation that puts a strong emphasis on the quality of data and its representativeness. These topics are almost never addressed in most books and guides.
 
-* Credit scoring a high-risk application of machine learning, which is guided specific requirements for the end-to-end model development cycle. This is very different from a typical process of unconstrained model prototyping aimed at achieving top accuracy
-* Financial data has the highest value according to <a href="https://edmcouncil.org/wp-content/uploads/2023/03/EDM_Council_Data_ROI_SIG_Value_of_Data_29_Mar_2023_.pdf">this study</a> and is one of the most expensive to obtain and is very specific to an institution running lending operations
-* Internal tools developed for credit risk require a solid data foundation that puts a strong emphasis on the quality of data and its representativeness. These topics are almost never addressed given the availability of a static dataset
+This handbook is focused on Python and its scientific ecosystem. Some years ago, many players in the banking splace doubted that open-source software is going to replace their provider of choice. With Python, open-source credit risk management software is a reality, especially so in light of growing interest in large language models (LLMs) in Finance.
 
-This handbook is focused on Python and its scientific ecosystem. Some years ago, many players in the banking splace thought that open-source software is never going to replace their provider of modeling and analytics software. With Python, open-source credit risk management software is a reality, especially with the growing interest in large language models (LLMs) in Finance.
-
-
-This handbook is an attempt to systematically collect relevant applied-focused materials that may be useful to a practitioner attempting to frame credit risk as a machine learning problem. Examples in the notebooks supplementing each chapter exemplify some examples of credit risk modeling work that can be extended to various real-world datasets.
+This handbook is an attempt to systematically collect relevant applied-focused materials that may be useful to a practitioner attempting to frame credit risk as a predictive modeling problem. Examples in the notebooks supplementing each chapter provide some examples of credit risk modeling work that can be extended to various real-world datasets.
 
 </span>
 

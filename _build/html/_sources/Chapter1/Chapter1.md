@@ -6,7 +6,7 @@
 
 <span style="font-family: Karma, sans-serif;">
 
-The simple truth is there's usually no readily available dataset.  It goes without saying that it's a practitioner's job (not another person's) to roll up her sleeves, collect the data, and get it in shape to solve the problem. Preparing a dataset often means sampling from all possible real-world data to create training data, and this is no trivial task as many things can go off track in the early stages of the project.
+The simple truth is there's usually no readily available dataset. It goes without saying that it's a practitioner's job (not another person's) to roll up their sleeves, collect the data, and get it in shape to solve the problem. Preparing a dataset often means sampling from all possible real-world data to create training data, and this is no trivial task as many things can go off track in the early stages of the project.
 
 When developing a minimum viable dataset for modeling credit risk, you should be extremely motivated to understand how data works to validate the usefulness of your problem framing and your data. As a common saying goes, "garbage in - garbage out": low-quality data, not subpar algorithmic performance, serves as a common source of risk assessment errors.
 
