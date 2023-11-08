@@ -5,7 +5,8 @@ Risk Practitioner Handbook
 
 ![Image](images/software.png)
 
-[![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-fuchsia?logo=GitHub)](https://github.com/deburky) [![View Book](https://img.shields.io/badge/Book-View%20Book-cyan?style=plastic&logo=book)](https://github.com/deburky)
+[![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-fuchsia?logo=GitHub)](https://github.com/deburky) 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9e1397bb-f8f0-4ac4-88bf-8e855103606a/deploy-status)](https://app.netlify.com/sites/neon-parfait-a7dde1/deploys)
 </div>
 
 <span style="font-family: Karma, sans-serif;">
@@ -14,7 +15,7 @@ The idea to write this handbook came to me after I started to research convenien
 
 While one may come across many books on the topic, the examples provided may often appear too high-level for practical applications. There are several reasons why financial risk as a domain of specialty is special and not easy to unlock:
 
-* Credit scoring a high-risk application of machine learning, which is governed by specific requirements for the end-to-end model development cycle. This is very different from a research process of unconstrained model prototyping aimed at maximimizing the accuracy metric.
+* Credit scoring a high-risk application of machine learning, which is governed by specific requirements surrounding model development activities. This makes the field very different from research settings where the aim is usually to maximimize accuracy or another metric of choice.
 * Financial data is one of the most valued assets according to <a href="https://edmcouncil.org/wp-content/uploads/2023/03/EDM_Council_Data_ROI_SIG_Value_of_Data_29_Mar_2023_.pdf">this study</a> and is one of the most expensive to obtain, which makes datasets used in modeling very specific to a lender.
 * Internal tools developed for credit risk require a solid data foundation that puts a strong emphasis on the quality of data and its representativeness. These topics are almost never addressed in most books and guides.
 
@@ -28,7 +29,7 @@ This handbook is an attempt to systematically collect relevant applied-focused m
 
 ![Image](images/photo_02.png)
 
-<p><span style="font-family: Karma, sans-serif;">Denis is a risk practitioner specializing in credit risk modeling and consumer lending, a technical writer and a loyal fan of the Python language. The author is committed to making open-source tools more accessible to the community. For updates and additional tips, you can follow me on <a href="https://www.linkedin.com/in/denisburakov">LinkedIn</a>.</span></p>
+<p><span style="font-family: Karma, sans-serif;">Denis is a risk practitioner specializing in credit risk modeling and consumer lending, a technical writer and a loyal fan of the Python language. The author is committed to making open-source tools more accessible to the community. For updates and additional tips, feel free to get in touch with me on <a href="https://www.linkedin.com/in/denisburakov">LinkedIn</a>.</span></p>
 
 <style>
   .two-columns {
@@ -44,20 +45,8 @@ This handbook is an attempt to systematically collect relevant applied-focused m
 
 <div class="two-columns">
   <div class="column">
-    <h2>Why This Handbook?</h2>
-    <p><span style="font-family: Karma, sans-serif;">Credit scoring has been around for quite a while, so why write another handbook about it? Despite extensive research published over the years, this specific predictive modeling domain is no easy topic to dive into. However, learning by practicing on real-world credit datasets can help develop a practical understanding of the problem, its specifics, and how it can be modelled.
-</span></p>
-  </div>
-  <div class="column">
-    <h2>Why Python for Credit Risk Modeling?</h2>
-    <p><span style="font-family: Karma, sans-serif;">Python is known as the lingua franca of data and is one of the most commonly used languages in the analytics and machine learning space. Using Python efficiently in credit risk modeling is essential for producing readable, production-grade code and improving the scalability of credit-risk models..</span></p>
-  </div>
-</div>
-
-<div class="two-columns">
-  <div class="column">
-    <h2>About This Handbook</h2>
-    <p><span style="font-family: Karma, sans-serif;">This handbook is a compilation of helpful resources, tips and other artifacts collected across years of working in the advanced analytics space. It draws from real-world experience and best practices in credit risk modeling.</span></p>
+    <h2>Why Python?</h2>
+    <p><span style="font-family: Karma, sans-serif;">Python is known as the lingua franca of data and is one of the most commonly used languages in the analytics and machine learning space. Using Python efficiently in credit risk modeling is essential for producing readable, production-grade code and improving the scalability of credit-risk models.</span></p>
   </div>
   <div class="column">
     <h2>What to Expect From This Handbook</h2>
