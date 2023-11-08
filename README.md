@@ -19,7 +19,7 @@ While one may come across many books on the topic, the examples provided may oft
 * Financial data is one of the most valued assets according to <a href="https://edmcouncil.org/wp-content/uploads/2023/03/EDM_Council_Data_ROI_SIG_Value_of_Data_29_Mar_2023_.pdf">this study</a> and is one of the most expensive to obtain, which makes datasets used in modeling very specific to a lender.
 * Internal tools developed for credit risk require a solid data foundation that puts a strong emphasis on the quality of data and its representativeness. These topics are almost never addressed in most books and guides.
 
-This handbook is focused on Python and its scientific ecosystem. Some years ago, many players in the banking splace doubted that open-source software is going to replace their provider of choice. With Python, open-source credit risk management software is a reality, especially so in light of growing interest in large language models (LLMs) in Finance.
+This handbook is focused on Python and its scientific ecosystem. Some years ago, many players in the banking space doubted that open-source software is going to replace their provider of choice. With Python, open-source credit risk management software is a reality, especially so in light of growing interest in large language models (LLMs) in Finance.
 
 This handbook is an attempt to systematically collect relevant applied-focused materials that may be useful to a practitioner attempting to frame credit risk as a predictive modeling problem. Examples in the notebooks supplementing each chapter provide some examples of credit risk modeling work that can be extended to various real-world datasets.
 
