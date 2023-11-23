@@ -2,7 +2,7 @@
 
 <span style="font-family: Karma, sans-serif;">
 
-<b>Credit scoring</b> is a high-stakes use of machine learning in the financial services industry. It has transformed consumer lending and is used for tasks like evaluating loan applications, assessing ,loan performance, segmenting risk, and determining pricing. A credit scoring system can be understood as the totality of tools, processes, and systems used for the estimation of the credit risk.
+<b>Credit scoring</b> is a high-stakes use of machine learning in the financial services industry. It has transformed consumer lending and is used for tasks like evaluating loan applications, assessing loan performance, segmenting risk, and determining pricing. A credit scoring system can be understood as the totality of tools, processes, and systems used for the estimation of the credit risk.
 
 ![image](../images/resized/models_small.png)
 
